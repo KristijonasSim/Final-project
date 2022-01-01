@@ -5,7 +5,6 @@ import {
   Toolbar,
 } from '@mui/material';
 
-
 function App() {
 
   return (

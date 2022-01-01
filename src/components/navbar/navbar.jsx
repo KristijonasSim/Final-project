@@ -4,13 +4,15 @@ import {
   Box,
   Toolbar,
 } from '@mui/material';
+import Annoucment from '../advertisement/annoucment';
 
 
 const Navbar = () => {
   return (
-    <div>
-      
-    </div>
+    <Box>
+        <Annoucment/>
+
+    </Box>
   )
 }
 
