@@ -5,11 +5,10 @@ import {
   Toolbar,
 } from '@mui/material';
 import Navbar from '../navbar/navbar';
-
+import Annoucment from '../advertisement/annoucment';
 const Homepage = () => {
   return (
     <Box>
-        <Navbar/>
     </Box>
   )
 }

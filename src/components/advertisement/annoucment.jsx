@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-  AppBar,
-  Box,
-  Toolbar,
-} from '@mui/material';
+import {Box,} from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 
@@ -17,12 +13,14 @@ const Annoucment = () => {
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 16,
-    margin: 0
+    fontFamily: 'Open Sans'
+
   })
 
   return (
     <Box>
-      <Annoucment>
+      <Annoucment >
+      FREE SHIPPING THIS WEEK!!!
 
       </Annoucment>
     </Box>
