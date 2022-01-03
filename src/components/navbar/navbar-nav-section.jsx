@@ -6,7 +6,7 @@ const NavbarNavSection = () => {
   return (
     <Box sx={{display: 'flex', gap: 2, alignItems: 'center'}}>
           <NavbarNavSectionLink to="/man-shoes-page">MAN</NavbarNavSectionLink>
-           <NavbarNavSectionLink to="/woman-shoes-page">WOMAN</NavbarNavSectionLink>
+           <NavbarNavSectionLink to="/women-shoes-page">WOMAN</NavbarNavSectionLink>
 
     </Box>
   )
