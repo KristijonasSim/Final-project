@@ -1,10 +1,10 @@
 import React from 'react'
 import { Products } from '../data'
-import ShoesPage from '../components/pages/man-shoes-page/shoes-page'
+import ShoesPage from '../components/pages/shoes-page/shoes-page'
 
 // const womensProducts = Products.filter();
 
-function MensShoesPage() {
+var MensShoesPage = () => {
   return (
     <div>
       <ShoesPage products={Products}/>

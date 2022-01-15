@@ -1,24 +1,25 @@
 import React from 'react'
 import {Box} from '@mui/material';
-import ManShoesPageGrid from './grid-page-grid';
-import ManGridPageCard from './grid-page-card';
+import ShoesPageGrid from './grid-page-grid';
+import GridPageCard from './grid-page-card';
 
 const ShoesPage = (props) => {
 
   return (
     <Box sx={{marginTop: 5}}>
-    <ManShoesPageGrid>
-      {props.products.map((item)=>{
+    <ShoesPageGrid>
+      {props.products.map((item) => {
         return (
 
-          <ManGridPageCard 
+          <GridPageCard 
           name={item.name}
           img={item.img}
           desc={item.desc}
-          price={item.price.value}/>
+          price={item.price.value}
+          key={item.id}/>
           )
         })}
-      </ManShoesPageGrid>
+      </ShoesPageGrid>
     </Box>
   )
 }

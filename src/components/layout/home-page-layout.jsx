@@ -1,17 +1,17 @@
 import React from 'react';
-import { Box } from '@mui/material';
 import { Outlet } from 'react-router-dom';
-import WideContainer from '../wide-container';
-
-
+import Navbar from '../navbar/navbar';
+import { Container } from '@mui/material';
+import Annoucment from '../advertisement/annoucment';
 
 const HomePageLayout = ({ children }) => (
-  <Box component="main">
-    <WideContainer>
-      {children}
+  <>
+  <Annoucment/>
+    <Navbar />
+    <Container element="main" sx={{ py: 3 }}>
       <Outlet />
-    </WideContainer>
-  </Box>
+    </Container>
+  </>
 );
 
 export default HomePageLayout;

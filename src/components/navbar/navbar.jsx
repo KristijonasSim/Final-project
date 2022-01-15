@@ -5,7 +5,6 @@ import {
   Toolbar,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import Annoucment from '../advertisement/annoucment';
 import NavbarUserSection from './navbar-user-section';
 import NavbarNavSection from './navbar-nav-section';
 import NavbarCompanySection from './navbar-company-section';
@@ -31,7 +30,7 @@ const Navbar = () => {
 
 
   return (
-    <Box sx={{flexGrow: 1, marginBottom: 2}}>
+    <Box sx={{marginBottom: 6}}>
       <StyledAppBar  position="static">
           <WideContainer>
           <StyledToolbar>

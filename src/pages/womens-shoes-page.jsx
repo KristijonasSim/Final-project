@@ -1,7 +1,8 @@
 import React from 'react'
 import { Products } from '../data'
-import ShoesPage from '../components/pages/man-shoes-page/shoes-page'
-function WomensShoesPage() {
+import ShoesPage from '../components/pages/shoes-page/shoes-page'
+
+var WomensShoesPage = () => {
   return (
     <div>
       <ShoesPage products={Products}/>
