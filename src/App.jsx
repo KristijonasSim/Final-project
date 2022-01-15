@@ -10,11 +10,11 @@ var App = () => {
 
   return (
    <ThemeProvider theme={lightTheme}>
-          <CssBaseline>
-    <ReduxProvider store={store}>
-      <Router />
-    </ReduxProvider>
-  </CssBaseline>
+       <CssBaseline>
+            <ReduxProvider store={store}>
+              <Router />
+            </ReduxProvider>
+      </CssBaseline>
    </ThemeProvider>
 
 

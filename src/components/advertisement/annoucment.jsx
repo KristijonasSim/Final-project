@@ -7,7 +7,7 @@ const Annoucment = () => {
 
   const Annoucment = styled('div')({
     height:30,
-    backgroundColor: '#E73830',
+    backgroundColor: '#D32F2F',
     color: 'white',
     display: 'flex',
     alignItems: 'center',

@@ -22,12 +22,12 @@ const NavbarUserSection = () => {
         <Box>
         {
           auth.loggedIn
-            ? <Button color="error" variant="contained" sx={{ m: 1 }} onClick={handleLogout}>Logout</Button>
+            ? <Button color="error" variant="contained" sx={{ m: 1 }} onClick={handleLogout}>LOGOUT</Button>
             : (
               <Box>
-                <StyledLink  to={LoginRoute.path} >Login</StyledLink>
+                <StyledLink  to={LoginRoute.path} >LOGIN</StyledLink>
 
-                <StyledLink to={RegisterRoute.path}>Register</StyledLink>
+                <StyledLink to={RegisterRoute.path}>REGISTER</StyledLink>
               </Box>
             )
         }

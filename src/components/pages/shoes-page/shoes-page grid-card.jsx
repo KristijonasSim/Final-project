@@ -7,22 +7,24 @@ import { CardActionArea } from '@mui/material';
 
 
 
-const GridPageCard = (props) => {
+const GridPageCard = ({
+  title, price, ImageURL,
+}) => {
   return (
     <Card sx={{ maxWidth: 345, height: 440}}>
       <CardActionArea>
         <CardMedia sx={{ maxWidth: 345}}
           component="img"
           height="350px"
-          image={props.img}
+          image={ImageURL}
           
         />
         <CardContent  sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
               <Typography gutterBottom variant="h6" component="div">
-                {props.name}
+                {title}
               </Typography>
               <Typography variant="h6" color="text.primary">
-                {props.price}  $
+                {price}  $
               </Typography>
             </CardContent>
       </CardActionArea>

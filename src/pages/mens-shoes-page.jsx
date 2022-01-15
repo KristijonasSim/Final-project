@@ -1,5 +1,4 @@
 import React from 'react'
-import { Products } from '../data'
 import ShoesPage from '../components/pages/shoes-page/shoes-page'
 
 // const womensProducts = Products.filter();
@@ -7,7 +6,7 @@ import ShoesPage from '../components/pages/shoes-page/shoes-page'
 var MensShoesPage = () => {
   return (
     <div>
-      <ShoesPage products={Products}/>
+      <ShoesPage/>
     </div>
   )
 }

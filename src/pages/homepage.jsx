@@ -2,14 +2,15 @@ import React from 'react'
 import {
   Box,
 } from '@mui/material';
+import Slider from '../components/slider/slider';
 
 
 const Homepage = () => {
   return (
     <Box>
-        ffff
+      <Slider/>
     </Box>
   )
 }
 
-export default Homepage
+export default Homepage;

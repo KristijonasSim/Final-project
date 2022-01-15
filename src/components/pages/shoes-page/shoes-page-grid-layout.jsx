@@ -1,9 +1,9 @@
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 
-const ShoesPageGrid = styled(Box)(({ theme }) => ({
+const ShoesPageGridLayout = styled(Box)(({ theme }) => ({
   display: 'grid',
-  margin: theme.spacing(10, 0),
+  margin: theme.spacing(4),
   gridTemplateColumns: '2fr',
   gap: theme.spacing(4,0),
   [theme.breakpoints.up('sm')]: {
@@ -21,4 +21,4 @@ const ShoesPageGrid = styled(Box)(({ theme }) => ({
   },
 }));
 
-export default ShoesPageGrid;
+export default ShoesPageGridLayout;

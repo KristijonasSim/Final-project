@@ -5,7 +5,7 @@ import RegisterPage from "../pages/register-page";
 import MensShoesPage from "../pages/mens-shoes-page";
 import WomensShoesPage from "../pages/womens-shoes-page";
 import { PUBLIC, VISITOR} from "./auth-types";
-
+import Blog from '../pages/blog'
 
 export const HomeRoute = {
   title: 'Home',
@@ -28,6 +28,13 @@ export const WomensPageRoute = {
   page: <WomensShoesPage />,
 };
 
+export const BlogRoute = {
+  title: 'Blog',
+  path: '/blog',
+  type: PUBLIC,
+  page: <Blog />,
+};
+
 export const LoginRoute = {
   title: 'Login',
   path: '/login',
@@ -48,4 +55,5 @@ export const pageLayoutRoutes = [
   RegisterRoute,
   MensPageRoute,
   WomensPageRoute,
+  BlogRoute,
 ];

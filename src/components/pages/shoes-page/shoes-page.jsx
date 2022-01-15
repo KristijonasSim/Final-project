@@ -1,27 +1,17 @@
-import React from 'react'
-import {Box} from '@mui/material';
-import ShoesPageGrid from './grid-page-grid';
-import GridPageCard from './grid-page-card';
+import React from 'react';
 
-const ShoesPage = (props) => {
+import {
+  Box,
+} from '@mui/material';
 
-  return (
-    <Box sx={{marginTop: 5}}>
-    <ShoesPageGrid>
-      {props.products.map((item) => {
-        return (
+import ShoesPageGrid from './shoes-page-grid';
 
-          <GridPageCard 
-          name={item.name}
-          img={item.img}
-          desc={item.desc}
-          price={item.price.value}
-          key={item.id}/>
-          )
-        })}
-      </ShoesPageGrid>
-    </Box>
-  )
-}
+const ShoesPage = () => (
+  <Box sx={{ px: 2, py: 2, width: '100%' }}>
+      <Box item xs={10}>
+        <ShoesPageGrid />
+      </Box>
+  </Box>
+);
 
-export default ShoesPage
+export default ShoesPage;
