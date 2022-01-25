@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material/styles';
 
 const mainTheme = createTheme({
-  spacing: 8,
+  spacing: 12,
   breakpoints: {
     values: {
       xs: 0,
@@ -12,8 +12,8 @@ const mainTheme = createTheme({
     },
   },
   typography: {
-    fontSize: 13,
-    fontSizeLg: 15,
+    fontSize: 14,
+    fontSizeLg: 17,
   },
 });
 
@@ -21,7 +21,7 @@ const lightTheme = createTheme(mainTheme, {
   mixins: {
     toolbar: {
       [mainTheme.breakpoints.up('sm')]: {
-        minHeight: 80,
+        minHeight: 100,
       },
     },
   },

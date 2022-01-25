@@ -1,7 +1,6 @@
-import { createStore, combineReducers } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import authReducer from './auth';
-import usersReducer from './users';
+import { configureStore } from '@reduxjs/toolkit';
+import auth from './auth';
+import users from './users';
 
 
 /*   
@@ -16,11 +15,11 @@ Redux reducer:
   grąžinti VISIŠKAI NAUJAI SUDARYTĄ būseną (state).
 */
 
-const mainReducer = combineReducers({
-  users: usersReducer,
-  auth: authReducer,
-})
-
-const store = createStore(mainReducer, composeWithDevTools());
+const store = configureStore({
+  reducer: {
+    users,
+    auth,
+  },
+});
 
 export default store;

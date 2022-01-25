@@ -5,7 +5,7 @@ const ShoesPageGridLayout = styled(Box)(({ theme }) => ({
   display: 'grid',
   margin: theme.spacing(4),
   gridTemplateColumns: '2fr',
-  gap: theme.spacing(4,0),
+  gap: theme.spacing(4,2),
   [theme.breakpoints.up('sm')]: {
     gridTemplateColumns: 'repeat(2, 1fr)',
   },

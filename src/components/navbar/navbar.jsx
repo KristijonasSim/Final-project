@@ -8,21 +8,22 @@ import { styled } from '@mui/material/styles';
 import NavbarUserSection from './navbar-user-section';
 import NavbarNavSection from './navbar-nav-section';
 import NavbarCompanySection from './navbar-company-section';
-import WideContainer from '../wide-container';
 
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   color: theme.palette.text.primary,
   background: theme.palette.common.white,
-  boxShadow: theme.shadows[0],
-  height: 60,
+   boxShadow: theme.shadows[2],
+  [theme.breakpoints.down('lg')]: {
+    display: 'none',
+  },
+
 }));
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
   alignItems: 'stretch',
-  [theme.breakpoints.up('sm')]: {
-    padding: 0,
+  [theme.breakpoints.down('lg')]: {
   },
 }));
 
@@ -30,23 +31,17 @@ const Navbar = () => {
 
 
   return (
-    <Box sx={{marginBottom: 6}}>
-      <StyledAppBar  position="static">
-          <WideContainer>
-          <StyledToolbar>
-          <Box sx={{ display: 'flex', alignItems: 'center', flex: 1, justifyContent: 'left',}}>
+      <StyledAppBar sx={{top:30}} >
+          <StyledToolbar sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', }} >
                 <NavbarCompanySection/>
-              </Box>
-              <Box sx={{display: 'flex', alignItems: 'center',   flex: 1, justifyContent: 'center',}}>
+              <Box >
                  <NavbarNavSection/>
               </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center',  flex: 1, justifyContent: 'end',}}>
+              <Box >
                  <NavbarUserSection/>
               </Box>              
             </StyledToolbar>
-          </WideContainer>
         </StyledAppBar>
-    </Box>
   )
 }
 

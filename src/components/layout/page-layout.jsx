@@ -4,14 +4,14 @@ import Navbar from '../navbar/navbar';
 import { Box } from '@mui/material';
 import Annoucment from '../advertisement/annoucment';
 
-const HomePageLayout = ({ children }) => (
+const PageLayout = ({ children }) => (
   <>
   <Annoucment/>
     <Navbar />
-    <Box element="main" sx={{ py: 3 }}>
+    <Box element="main" sx={{marginTop:'123px'}}>
       <Outlet />
     </Box>
   </>
 );
 
-export default HomePageLayout;
+export default PageLayout;

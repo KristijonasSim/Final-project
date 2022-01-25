@@ -4,6 +4,7 @@ import {
   Box,
   Avatar,
   Typography,
+  CircularProgress
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Button from './auth-form-button';
@@ -14,6 +15,8 @@ const AuthForm = ({
   title,
   linkTo,
   linkTitle,
+  isValid,
+  loading,
   onSubmit,
 }) => (
   <Container
@@ -37,8 +40,8 @@ const AuthForm = ({
         </Typography>
       </Box>
       {children}
-      <Button>
-        {title}
+      <Button disabled={!isValid}>
+        {loading ? <CircularProgress color="inherit" /> : title }
       </Button>
       <Link to={linkTo}>
         {linkTitle}

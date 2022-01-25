@@ -8,23 +8,22 @@ import { CardActionArea } from '@mui/material';
 
 
 const GridPageCard = ({
-  title, price, ImageURL,
+  title, price, imageURL,
 }) => {
   return (
     <Card sx={{ maxWidth: 345, height: 440}}>
-      <CardActionArea>
+      <CardActionArea height="440px" disableRipple>
         <CardMedia sx={{ maxWidth: 345}}
           component="img"
           height="350px"
-          image={ImageURL}
-          
+          image={imageURL}
         />
         <CardContent  sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-              <Typography gutterBottom variant="h6" component="div">
+              <Typography gutterBottom variant="h8" component="div">
                 {title}
               </Typography>
               <Typography variant="h6" color="text.primary">
-                {price}  $
+                {price}  
               </Typography>
             </CardContent>
       </CardActionArea>

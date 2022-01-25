@@ -1,6 +1,6 @@
 import React from 'react'
 
-const blog = () => {
+const BlogPage = () => {
   return (
     <div>
         
@@ -8,4 +8,4 @@ const blog = () => {
   )
 }
 
-export default blog
+export default BlogPage

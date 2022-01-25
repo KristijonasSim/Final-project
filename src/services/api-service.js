@@ -16,13 +16,33 @@ const fakeFetch = ({ email, password }) => new Promise(((success, failure) => {
     }else {
       failure(new Error('Incorrect email or/and password'));
     }
-  }, 2000);
+  }, 1000);
+}));
+
+const login = async({email, password}) => {
+  const response = await fakeFetch({email, password});
+  return response;
+};
+
+
+const checkEmail = (email) => new Promise(((success) => {
+  const existingEmails = ['admin@gmail.com', 'user1@gmail.com'];
+  setTimeout(() => {
+    const emailAvailable = !existingEmails.includes(email);
+    success(emailAvailable);
+  }, 1000);
+}));
+
+const register = () => new Promise (((success) => {
+  setTimeout(() => {
+    success(true);
+  }, 1000)
 }));
 
 
 const annonymousInstance = axios.create({
-  baseURL: 'http://localhost:3000',
-  timeout: 10000,
+  baseURL: 'http://localhost:5000',
+  timeout: 2000,
   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
@@ -31,8 +51,7 @@ const annonymousInstance = axios.create({
 });
 
 const fetchUsers = async () => {
-  const response = await annonymousInstance.get('/users');
-  return response.data;
+  const response = await annonymousInstance.get('/users');return response.data;
 };
 
 const fetchItems = async () => {
@@ -57,7 +76,6 @@ const fetchOrders = async () => {
 
 const fetchedItems = async () => {
   const items = await fetchItems();
-  
   const formatedItems = items.map(({
     id, price, ...rest
   }) => {
@@ -68,7 +86,6 @@ const fetchedItems = async () => {
     };
     return item;
   });
-
   return formatedItems;
 };
 
@@ -79,16 +96,9 @@ const APIService = {
   fetchCartProducts,
   fetchOrders,
   fetchedItems,
-};
-
-
-
-const login = async({email, password}) => {
-  const response = await fakeFetch({email, password});
-  return response;
-};
-
-export default {
   login,
-  APIService,
-}
+  checkEmail,
+  register,
+};
+
+export default APIService

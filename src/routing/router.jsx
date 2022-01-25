@@ -4,33 +4,52 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
-import HomePageLayout from '../components/layout/home-page-layout';
-import { pageLayoutRoutes } from './routes';
-import { VISITOR } from './auth-types';
+import { VISITOR, ADMIN, LOGGED_IN } from './auth-types';
 import RequireVisitor from './require-visitor';
-import ErrorPage from '../pages/error-page';
+import RequireAdmin from './require-admin';
+import RequireLoggedIn from './require-logged-in';
+import routeStructure from './route-structure';
+import routePageEnum from './route-page-enum';
 
+const addRouteProtection = {
+  [VISITOR]: (Page) => <RequireVisitor><Page /></RequireVisitor>,
+  [ADMIN]: (Page) => <RequireAdmin><Page /></RequireAdmin>,
+  [LOGGED_IN]: (Page) => <RequireLoggedIn><Page /></RequireLoggedIn>,
+};
 
-const buildedPageLayoutRoutes = pageLayoutRoutes.map(({ page, path, type }) => {
-  let authentictedPage;
-  switch (type) {
-    case VISITOR:
-      authentictedPage = <RequireVisitor>{page}</RequireVisitor>;
-      break;
-    default:
-      authentictedPage = page;
+const buildRouteRecursive = ({
+  path,
+  pageName,
+  auth,
+  children,
+}) => {
+  const Page = routePageEnum[pageName];
+  if (children) {
+    return (
+      <Route key={pageName} path={path} element={<Page />}>
+        {children.map(buildRouteRecursive)}
+      </Route>
+    );
   }
-  return <Route key={path} path={path} element={authentictedPage} />;
-});
+
+  const element = addRouteProtection[auth]
+    ? addRouteProtection[auth](Page)
+    : <Page />;
+
+  return (
+    <Route
+      key={pageName}
+      path={path ?? undefined}
+      index={path === null}
+      element={element}
+    />
+  );
+};
 
 const Router = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<HomePageLayout />}>
-        {buildedPageLayoutRoutes}
-        <Route path="*" element={<ErrorPage />} />
-      </Route>
-
+      {routeStructure.map(buildRouteRecursive)}
     </Routes>
   </BrowserRouter>
 );

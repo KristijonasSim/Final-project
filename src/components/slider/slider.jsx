@@ -7,9 +7,8 @@ import { SliderImages } from "../../Sliderimages";
 
   const Container = styled(`div`)({
     width: '100%',
-    height: '70vh',
+    height: '75vh',
     display: 'flex',
-    position: 'relative',
     overflow: 'hidden',
     backgroundColor: '#FFFAFA',
     margin: 0,
@@ -93,7 +92,7 @@ const Wrapper = styled.div`
     </Arrow>
     <Wrapper slideIndex={slideIndex}>
       {SliderImages.map((item) => (
-        <Slide>
+        <Slide key={item.id}>
           <ImgContainer>
             <Image src={item.img} />
           </ImgContainer>

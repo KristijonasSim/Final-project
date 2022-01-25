@@ -4,7 +4,6 @@ import {
 } from '@mui/material';
 import Slider from '../components/slider/slider';
 
-
 const Homepage = () => {
   return (
     <Box>

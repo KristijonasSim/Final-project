@@ -1,6 +1,6 @@
 import React from 'react'
-import ShoesPage from '../components/pages/shoes-page/shoes-page'
 
+import ShoesPage from '../components/pages/shoes-page/shoes-page'
 // const womensProducts = Products.filter();
 
 var MensShoesPage = () => {

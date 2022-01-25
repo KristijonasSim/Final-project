@@ -1,13 +1,16 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from 'react'
 import {Box} from '@mui/material';
-import NavbarNavSectionLink from './navbar-nav-section-link';
+import NavbarLink from './navbar-link';
+import routes from '../../routing/routes';
 const NavbarCompanySection = () => {
 
-  
+
+// eslint-disable-next-line jsx-a11y/alt-text
   return (
-    <Box sx={{margin: 4}}>
+    <Box>
           
-          <NavbarNavSectionLink to="/"><img src={process.env.PUBLIC_URL + "/CompanyLogo.PNG"} width="220" sx={{cursor: 'pointer'}}/></NavbarNavSectionLink>
+          <NavbarLink to={routes.HomePage}><img src={process.env.PUBLIC_URL + "/CompanyLogo.PNG"} width="220" sx={{cursor: 'pointer'}}/></NavbarLink>
 
     </Box>
   )

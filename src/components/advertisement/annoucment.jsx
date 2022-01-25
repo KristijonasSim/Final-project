@@ -1,29 +1,28 @@
 import React from 'react'
-import {Box,} from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 
 const Annoucment = () => {
 
   const Annoucment = styled('div')({
+    display: 'flex',
+    top:0,
+    zIndex:'10',
     height:30,
+    width: "100%",
     backgroundColor: '#D32F2F',
     color: 'white',
-    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 16,
-    fontFamily: 'Open Sans'
-
+    fontFamily: 'Open Sans',position:'fixed',
   })
 
   return (
-    <Box>
       <Annoucment >
       FREE SHIPPING THIS WEEK!!!
 
       </Annoucment>
-    </Box>
   )
 }
 

@@ -1,5 +1,8 @@
+/* eslint-disable */
 import React, { useState } from 'react';
-import AuthForm from '../components/auth-from';
+import { useDispatch } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
+
 import {
   TextField,
   Grid,
@@ -8,100 +11,133 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
-import { useDispatch } from 'react-redux';
-import { createLoginSuccessAction } from '../store/auth/action-creators';
-import apiService from '../services/api-service';
-import { RegisterRoute } from '../routing/routes';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 
+import AuthForm from '../components/auth-from';
+import { loginSuccess } from '../store/auth';
+import ApiService from '../services/api-service';
+import routes from '../routing/routes';
 
+const validationSchema = yup.object({
+  email: yup
+    .string()
+    .email('Is not valid email')
+    .required('Is required'),
+  password: yup
+    .string()
+    .required('Is required'),
+});
+
+const initialValues = {
+  email: '',
+  password: '',
+};
 
 const LoginPage = () => {
+  const [searchParams] = useSearchParams();
   const [errorMsg, setErrorMsg] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-
-    (async () => {
-      try {
-        setLoading(true);
-        const { user, token } = await apiService.login({ email, password });
-        dispatch(createLoginSuccessAction({ user, token }));
-      } catch (error) {
-        // setErrorMsg(error.message);
-        setLoading(false);
-      }
-    })();
+  const handleLogin = async ({ email, password }) => {
+    try {
+      const { user, token } = await ApiService.login({ email, password });
+      const redirectTo = searchParams.get('redirectTo');
+      const loginSuccessAction = loginSuccess({ user, token, redirectTo });
+      dispatch(loginSuccessAction);
+    } catch (error) {
+      setErrorMsg(error.message);
+    }
   };
 
+
+  const {
+    values, errors, touched, isValid, dirty, isSubmitting,
+    handleChange, handleBlur, handleSubmit,
+  } = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: handleLogin,
+  })
+
+
+
   return (
-    <AuthForm
-      title="Prisijungti"
-      linkTo={RegisterRoute.path}
-      linkTitle="Neturite paskyros? Registruokitės"
-      onSubmit={handleLogin}
-      loading={loading}
-    >
-      <Grid container spacing={4}>
-        {
-          errorMsg
-            ? (
-              <Grid item xs={12}>
-                <Alert
-                  severity="error"
-                  action={(
-                    <IconButton
-                      aria-label="close"
-                      color="inherit"
-                      size="small"
-                      onClick={() => setErrorMsg(null)}
-                    >
-                      <CloseIcon fontSize="inherit" />
-                    </IconButton>
-                )}
+        <AuthForm
+                title="Login"
+                linkTo={routes.RegisterPage}
+                linkTitle="Dont have an account? Register"
+                onSubmit={handleSubmit}
+                loading={isSubmitting}
+                isValid={dirty & isValid}
+              >
+                <Grid container spacing={4}>
+                  {
+                    errorMsg
+                      ? (
+                        <Grid item xs={12}>
+                          <Alert
+                            severity="error"
+                            action={(
+                              <IconButton
+                                aria-label="close"
+                                color="inherit"
+                                size="small"
+                                onClick={() => setErrorMsg(null)}
+                              >
+                                <CloseIcon fontSize="inherit" />
+                              </IconButton>
+                          )}
+      
+                          >
+                            {errorMsg}
+                          </Alert>
+                        </Grid>
+                      )
+                      : null
+                  }
+      
+                  <Grid item xs={12}>
+                    <TextField
+                      variant="outlined"
+                      fullWidth
+                      id="email"
+                      label="Email"
+                      autoFocus
+                      // Props provided by Formik
+                      name="email"
+                      value={values.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      error={touched.email && Boolean(errors.email)}
+                      helperText={touched.email && errors.email}
+                      disabled={isSubmitting}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sx={{ mb: 4 }}>
+                    <TextField
+                      variant="outlined"
+                      fullWidth
+                      name="password"
+                      label="Password"
+                      type="password"
+                      id="password"
+                      // Props provided by Formik
+                      name="password"
+                      value={values.password}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      error={touched.password && Boolean(errors.password)}
+                      helperText={touched.password && errors.password}
+                      disabled={isSubmitting}
 
-                >
-                  {errorMsg}
-                </Alert>
-              </Grid>
-            )
-            : null
-        }
-
-<Grid item xs={12}>
-          <TextField
-            variant="outlined"
-            fullWidth
-            id="email"
-            label="Email"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            value={email}
-            disabled={loading}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Grid>
-        <Grid item xs={12} sx={{ mb: 4 }}>
-          <TextField
-            variant="outlined"
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            value={password}
-            disabled={loading}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Grid>
-      </Grid>
-    </AuthForm>
-  );
+                    />
+                  </Grid>
+                </Grid>
+        </AuthForm>
+      )
+  
 };
 
 export default LoginPage;
+

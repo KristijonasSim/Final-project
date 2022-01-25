@@ -1,33 +1,37 @@
 import React from 'react'
 import {Box,  Button} from '@mui/material';
+
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined'; 
-import StyledLink from './navbar-nav-section-link'
-import { LoginRoute, RegisterRoute } from '../../routing/routes';
+
+import StyledLink from './navbar-link'
+import routes from '../../routing/routes';
+
 import { useSelector, useDispatch } from 'react-redux';
+import { logout, selectAuth } from '../../store/auth';
 
 
-import { logoutAction } from '../../store/auth/action-creators';
-import { authSelector } from '../../store/auth/selectors'
 const NavbarUserSection = () => {
 
-  const auth = useSelector(authSelector);
+  const { loggedIn } = useSelector(selectAuth);
   const dispatch = useDispatch();
-  const handleLogout = () => dispatch(logoutAction);
+
+  const handleLogout = () => dispatch(logout());
+
 
 
   return (
-    <Box sx={{display: 'flex', alignItems: 'center', margin: 4,}}>
+    <Box sx={{display: 'flex', alignItems: 'center', }}>
         <PersonOutlineOutlinedIcon sx={{ fontSize: 40,cursor: 'pointer', fontWeight: 100 }}></PersonOutlineOutlinedIcon>
         <Box>
         {
-          auth.loggedIn
+          loggedIn
             ? <Button color="error" variant="contained" sx={{ m: 1 }} onClick={handleLogout}>LOGOUT</Button>
             : (
               <Box>
-                <StyledLink  to={LoginRoute.path} >LOGIN</StyledLink>
+                <StyledLink  to={routes.LoginPage} >LOGIN</StyledLink>
 
-                <StyledLink to={RegisterRoute.path}>REGISTER</StyledLink>
+                <StyledLink to={routes.RegisterPage}>REGISTER</StyledLink>
               </Box>
             )
         }

@@ -20,8 +20,10 @@ const StyledLink = styled(NavLink)(({ theme }) => ({
 
 
 
-const NavbarNavSectionLink = ({ to, children }) => (
-  <StyledLink to={to}>{children}</StyledLink>
+const NavbarLink = ({ to, children }) => (
+  <StyledLink to={to}>
+    {children}
+  </StyledLink>
 );
 
-export default NavbarNavSectionLink;
+export default NavbarLink;
