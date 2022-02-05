@@ -20,8 +20,8 @@ const mainTheme = createTheme({
 const lightTheme = createTheme(mainTheme, {
   mixins: {
     toolbar: {
-      [mainTheme.breakpoints.up('sm')]: {
-        minHeight: 100,
+      [mainTheme.breakpoints.up('md')]: {
+        minHeight: 75,
       },
     },
   },

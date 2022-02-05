@@ -15,7 +15,6 @@ const NavbarUserSection = () => {
 
   const { loggedIn } = useSelector(selectAuth);
   const dispatch = useDispatch();
-
   const handleLogout = () => dispatch(logout());
 
 

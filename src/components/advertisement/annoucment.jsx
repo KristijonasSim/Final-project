@@ -7,7 +7,6 @@ const Annoucment = () => {
   const Annoucment = styled('div')({
     display: 'flex',
     top:0,
-    zIndex:'10',
     height:30,
     width: "100%",
     backgroundColor: '#D32F2F',
@@ -15,7 +14,8 @@ const Annoucment = () => {
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 16,
-    fontFamily: 'Open Sans',position:'fixed',
+    fontFamily: 'Open Sans',
+    position:'fixed',
   })
 
   return (

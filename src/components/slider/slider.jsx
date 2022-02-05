@@ -5,14 +5,16 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useState } from "react";
 import { SliderImages } from "../../Sliderimages";
 
+
   const Container = styled(`div`)({
     width: '100%',
     height: '75vh',
     display: 'flex',
     overflow: 'hidden',
     backgroundColor: '#FFFAFA',
-    margin: 0,
     padding: 0,
+    margin: 0,
+    top: 0,
   })
 
   const Arrow = styled.div`
@@ -45,17 +47,17 @@ const Wrapper = styled.div`
     display: 'flex',
     alignItems: 'center',
     width: '100vw',
-    height: '100vh',
+    height: '75vh',
   })
   const ImgContainer = styled('div')({
     flex:1,
     height: '100%'
   })
   const InfoContainer = styled('div')({
-    flex:1
+    flex: 1,
   })
   const Image = styled('img')({
-    height: '90%'
+    height: '100%'
 
   })
 
@@ -90,10 +92,10 @@ const Wrapper = styled.div`
     <Arrow direction="left" onClick={() => handleClick("left")}>
       <ArrowBackIosIcon />
     </Arrow>
-    <Wrapper slideIndex={slideIndex}>
+    <Wrapper slideIndex={slideIndex} >
       {SliderImages.map((item) => (
         <Slide key={item.id}>
-          <ImgContainer>
+          <ImgContainer >
             <Image src={item.img} />
           </ImgContainer>
           <InfoContainer>

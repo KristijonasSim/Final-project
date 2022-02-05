@@ -41,8 +41,8 @@ const register = () => new Promise (((success) => {
 
 
 const annonymousInstance = axios.create({
-  baseURL: 'http://localhost:5000',
-  timeout: 2000,
+  baseURL: 'http://localhost:5000/api/auth',
+  // timeout: 2000,
   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
@@ -51,12 +51,13 @@ const annonymousInstance = axios.create({
 });
 
 const fetchUsers = async () => {
-  const response = await annonymousInstance.get('/users');return response.data;
+  const response = await annonymousInstance.get('/users');
+  return response.data;
 };
 
 const fetchItems = async () => {
   const response = await annonymousInstance.get('/items');
-  return response.data;
+  return response.data.items;
 };
 
 const fetchCarts = async () => {
@@ -88,6 +89,11 @@ const fetchedItems = async () => {
   });
   return formatedItems;
 };
+const fetchFilters = async () => {
+  const response = await annonymousInstance.get('/filters');
+  console.log(response.data)
+  return response.data.filters;
+};
 
 const APIService = {
   fetchUsers,
@@ -96,6 +102,7 @@ const APIService = {
   fetchCartProducts,
   fetchOrders,
   fetchedItems,
+  fetchFilters,
   login,
   checkEmail,
   register,

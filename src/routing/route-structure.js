@@ -14,13 +14,11 @@ export default [
       {
         path: 'women',
         pageName: 'WomensShoesPage',
-        auth: VISITOR,
 
       },
       {
         path: 'men',
         pageName: 'MensShoesPage',
-        auth: VISITOR,
 
       },
       {

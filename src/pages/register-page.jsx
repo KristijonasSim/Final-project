@@ -211,7 +211,7 @@ const RegisterPage = () => {
             <TextField
               variant="outlined"
               fullWidth
-              label="Pakartokite Slaptažodį"
+              label="Repeat password"
               type="password"
               // Props provided by Formik
               name="repeatPassword"

@@ -2,12 +2,13 @@ import React from 'react'
 import {
   Box,
 } from '@mui/material';
-import Slider from '../components/slider/slider';
+import Slideris from '../components/slider/Slideris';
 
 const Homepage = () => {
   return (
     <Box>
-      <Slider/>
+      <Box sx={{top: 0}}>Hii</Box>
+      <Slideris/>
     </Box>
   )
 }

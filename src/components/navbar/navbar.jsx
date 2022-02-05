@@ -14,17 +14,12 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
   color: theme.palette.text.primary,
   background: theme.palette.common.white,
    boxShadow: theme.shadows[2],
-  [theme.breakpoints.down('lg')]: {
-    display: 'none',
-  },
-
 }));
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
   alignItems: 'stretch',
-  [theme.breakpoints.down('lg')]: {
-  },
+
 }));
 
 const Navbar = () => {

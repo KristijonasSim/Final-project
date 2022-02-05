@@ -1,7 +1,7 @@
 import React from 'react'
 import ShoesPage from '../components/pages/shoes-page/shoes-page'
 
-var WomensShoesPage = () => {
+const  WomensShoesPage = () => {
   return (
     <div>
       <ShoesPage/>
