@@ -6,21 +6,21 @@ const mainTheme = createTheme({
     values: {
       xs: 0,
       sm: 600,
-      md: 900,
+      md: 800,
       lg: 1200,
-      xl: 1760,
+      xl: 1500,
     },
   },
   typography: {
     fontSize: 14,
-    fontSizeLg: 17,
+    fontSizeLg: 16,
   },
 });
 
 const lightTheme = createTheme(mainTheme, {
   mixins: {
     toolbar: {
-      [mainTheme.breakpoints.up('md')]: {
+      [mainTheme.breakpoints.up('lg')]: {
         minHeight: 75,
       },
     },

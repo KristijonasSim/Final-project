@@ -17,7 +17,7 @@ const ShoesPageGrid = () => {
   }, []); 
 
   return (
-    <Box>
+    <Box >
       <ShoesPageGridLayout>
         {items.map((item) => (
           <GridPageCard

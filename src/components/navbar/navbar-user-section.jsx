@@ -6,7 +6,7 @@ import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 
 import StyledLink from './navbar-link'
 import routes from '../../routing/routes';
-
+import { styled } from '@mui/material/styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout, selectAuth } from '../../store/auth';
 
@@ -17,10 +17,15 @@ const NavbarUserSection = () => {
   const dispatch = useDispatch();
   const handleLogout = () => dispatch(logout());
 
+  const NavbarNavSectionBox = styled(Box)(({theme}) => ({
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },    
+}));
 
 
   return (
-    <Box sx={{display: 'flex', alignItems: 'center', }}>
+    <NavbarNavSectionBox sx={{display: 'flex', alignItems: 'center', }}>
         <PersonOutlineOutlinedIcon sx={{ fontSize: 40,cursor: 'pointer', fontWeight: 100 }}></PersonOutlineOutlinedIcon>
         <Box>
         {
@@ -37,7 +42,7 @@ const NavbarUserSection = () => {
         </Box>
 
         <ShoppingBagOutlinedIcon sx={{ fontSize: 35, cursor: 'pointer', marginLeft: 2 }} />
-    </Box>
+    </NavbarNavSectionBox>
   )
 }
 

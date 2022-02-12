@@ -6,21 +6,22 @@ const Annoucment = () => {
 
   const Annoucment = styled('div')({
     display: 'flex',
-    top:0,
+    top: 0,
     height:30,
     width: "100%",
-    backgroundColor: '#D32F2F',
+    backgroundColor: 'black',
     color: 'white',
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 16,
     fontFamily: 'Open Sans',
     position:'fixed',
+    zIndex: 2
   })
 
   return (
       <Annoucment >
-      FREE SHIPPING THIS WEEK!!!
+      FREE SHIPPING THIS WEEK !!!
 
       </Annoucment>
   )

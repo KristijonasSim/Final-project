@@ -89,11 +89,8 @@ const fetchedItems = async () => {
   });
   return formatedItems;
 };
-const fetchFilters = async () => {
-  const response = await annonymousInstance.get('/filters');
-  console.log(response.data)
-  return response.data.filters;
-};
+
+
 
 const APIService = {
   fetchUsers,
@@ -102,7 +99,6 @@ const APIService = {
   fetchCartProducts,
   fetchOrders,
   fetchedItems,
-  fetchFilters,
   login,
   checkEmail,
   register,

@@ -1,15 +1,10 @@
 import React from 'react'
-import {
-  Box,
-} from '@mui/material';
 import Slideris from '../components/slider/Slideris';
+import ShoesPageGrid from '../components/pages/shoes-page/shoes-page-grid'
 
 const Homepage = () => {
   return (
-    <Box>
-      <Box sx={{top: 0}}>Hii</Box>
-      <Slideris/>
-    </Box>
+      <><Slideris /><ShoesPageGrid /></>
   )
 }
 

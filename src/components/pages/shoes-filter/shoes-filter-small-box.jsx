@@ -14,7 +14,6 @@ const SmallBox = (props) => {
     lineHeight: '38px',
     cursor: 'pointer',
     fontWeight: 400,
-    position: 'relative',
     backgroundColor: `${props.bgColor}`
   })
 

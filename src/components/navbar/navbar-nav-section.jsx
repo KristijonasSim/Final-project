@@ -14,11 +14,10 @@ const NavbarNavSection = () => {
 }));
 
   return (
-    <NavbarNavSectionBox sx={{display: 'flex', gap: 2, alignItems: 'center', maxWidth: '1026px'}}>
+    <NavbarNavSectionBox sx={{display: 'flex', gap: 2, alignItems: 'center',}}>
           <NavbarLink to={routes.MensShoesPage}>MAN</NavbarLink>
           <NavbarLink to={routes.WomensShoesPage}>WOMAN</NavbarLink>
           <NavbarLink to={routes.Blog}>BLOG</NavbarLink>
-
     </NavbarNavSectionBox>
   )
 }

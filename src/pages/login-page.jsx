@@ -81,7 +81,7 @@ const LoginPage = () => {
                             action={(
                               <IconButton
                                 aria-label="close"
-                                color="inherit"
+                                color="primary"
                                 size="small"
                                 onClick={() => setErrorMsg(null)}
                               >

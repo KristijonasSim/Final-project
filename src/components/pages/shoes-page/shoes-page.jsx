@@ -5,16 +5,32 @@ import {
 } from '@mui/material';
 import ShoesFilter from '../shoes-filter/shoes-filter';
 import ShoesPageGrid from './shoes-page-grid';
+import { styled } from '@mui/material/styles';
 
-const ShoesPage = () => (
-  <Box sx={{ px: 2, py: 2, width: '100%', display:'flex', justifyContent: 'center'}}>
+
+const ShoesPage = () => {
+
+  const ShoesPageBox = styled(Box)(({theme}) => ({
+    display: 'flex',
+    justifyContent: 'space-around',
+    paddingLeft: '40px',
+    paddingRight: '40px',
+    [theme.breakpoints.down('lg')]: {
+      display: 'Block',
+    }
+  }))
+
+  
+  return (
+
+  <ShoesPageBox sx={{mt:4,}}>
       <Box>
         <ShoesFilter/>
       </Box>
       <Box>
         <ShoesPageGrid />
       </Box>
-  </Box>
-);
-
+  </ShoesPageBox>
+    );
+  }
 export default ShoesPage;

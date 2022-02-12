@@ -85,7 +85,6 @@ const RegisterPage = () => {
 
   const onSubmit = async ({ emailChecked, emailAvailable, ...formData }) => {
     const result = await APIService.register(formData);
-    console.log('Registracija pavyko', result);
   };
 
   const {

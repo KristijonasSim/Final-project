@@ -3,31 +3,62 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
-
-
+import Divider from '@mui/material/Divider';
+import { styled } from '@mui/material/styles';
 
 const GridPageCard = ({
-  title, price, imageURL,
+  title, price, imageURL, Size, Stock, id
 }) => {
+
+
+
+  const CardElement = styled(Card)(({theme}) => ({
+    border: "none", 
+    boxShadow: "none", 
+    height: '100%', 
+    position: 'relative',
+    display: 'flex', 
+    justifyContent: 'center',
+    flexDirection: 'column',
+    objectFit: 'scale-down'
+  }))
+
+  const TotalSize = Size.length
   return (
-    <Card sx={{ maxWidth: 345, height: 440}}>
-      <CardActionArea height="440px" disableRipple>
-        <CardMedia sx={{ maxWidth: 345}}
-          component="img"
-          height="350px"
-          image={imageURL}
+    <CardElement
+    >
+        <CardMedia sx={{cursor: 'pointer', objectFit: 'cover'}}
+        component="img"
+        image={imageURL}
         />
-        <CardContent  sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-              <Typography gutterBottom variant="h8" component="div">
+        <Typography sx={{mt:1, cursor: 'pointer'}} 
+        variant="body2" 
+        color="text.secondary"
+        >
+          {TotalSize} Sizes
+        </Typography>
+        <Divider sx={{mt: 1}}/>
+        <CardContent sx={{p: 0}}>
+              <Typography sx={{fontWeight: 'bold', mt:1}} 
+              variant="body1" 
+              >
                 {title}
               </Typography>
-              <Typography variant="h6" color="text.primary">
+              <Typography sx={{mt: 1}}
+              variant="body2" 
+              color="text.secondary"
+              >
+                {Stock} In warehouse right now
+        </Typography>
+              
+              
+              <Typography sx={{fontWeight: 'bold',}} 
+              variant="body1" 
+              >
                 {price}  
               </Typography>
             </CardContent>
-      </CardActionArea>
-    </Card>
+    </CardElement>
   );
 }
 export default GridPageCard
