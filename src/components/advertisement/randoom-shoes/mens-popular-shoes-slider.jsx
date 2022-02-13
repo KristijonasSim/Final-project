@@ -10,7 +10,7 @@ import ButtonMore from '../../buttons/button-more';
 import ArrowRightAltSharpIcon from '@mui/icons-material/ArrowRightAltSharp';
 
 
-const Slideris = () => {
+const MensPopularShoesSlider = () => {
   const [items, setItems] = useState([]);
   useEffect(() => {
     (async () => {
@@ -21,11 +21,10 @@ const Slideris = () => {
   }, []);
 
   const breakPoints = [
-    { width: 600, itemsToShow: 1 },
-    { width: 800, itemsToShow: 2 },
-    { width: 1200, itemsToShow: 3 },
-    { width: 1500, itemsToShow: 4 },
-    { width: 1700, itemsToShow: 5 },
+    { width: 600, itemsToShow: 2 },
+    { width: 800, itemsToShow: 3 },
+    { width: 1200, itemsToShow: 4 },
+    { width: 1500, itemsToShow: 5 },
   ];
 
   const randomSlice = items.slice(0, 10)
@@ -42,8 +41,8 @@ const Slideris = () => {
           disableArrowsOnEnd='false'
           breakPoints={breakPoints}
           >
-              {randomSlice.map((item) => (
-                // eslint-disable-next-line react/jsx-key
+          {randomSlice.map((item) => (
+            // eslint-disable-next-line react/jsx-key
             <Box sx={{m:1}}>
             <GridPageCard
               key={item.id}
@@ -51,7 +50,6 @@ const Slideris = () => {
             />
             </Box>   
           ))}
-          
             </Carousel>
       </Box>
     );
@@ -59,4 +57,4 @@ const Slideris = () => {
   
 
 
-export default Slideris
+export default MensPopularShoesSlider
