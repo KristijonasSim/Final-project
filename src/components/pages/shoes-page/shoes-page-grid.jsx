@@ -16,6 +16,7 @@ const ShoesPageGrid = () => {
     })();
   }, []); 
 
+
   return (
     <Box >
       <ShoesPageGridLayout>

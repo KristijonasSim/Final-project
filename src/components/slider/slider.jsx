@@ -1,116 +1,41 @@
-/* eslint-disable */
-import styled from "styled-components";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'; 
-import { useState } from "react";
-import { SliderImages } from "../../Sliderimages";
+import React from 'react';
+import Carousel from 'react-material-ui-carousel';
+import { SliderImages } from '../../Sliderimages';
+import { Box } from '@mui/system';
+import { styled } from '@mui/material/styles';
 
 
-  const Container = styled(`div`)({
-    width: '100%',
-    height: '75vh',
-    display: 'flex',
-    overflow: 'hidden',
-    backgroundColor: '#FFFAFA',
-    padding: 0,
-    margin: 0,
-    top: 0,
-  })
+const Image = styled('img')({
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+})
 
-  const Arrow = styled.div`
-  width: 50px;
-  height: 50px;
-  background-color: #fff7f7;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: ${(props) => props.direction === "left" && "10px"};
-  right: ${(props) => props.direction === "right" && "10px"};
-  margin: auto;
-  cursor: pointer;
-  opacity: 0.5;
-  z-index: 2;
-`;
 
-const Wrapper = styled.div`
-  height: 100%;
-  display: flex;
-  transition: all 1.5s ease;
-  transform: translateX(${(props) => props.slideIndex * -100}vw);
-`;
-  
-  const Slide = styled('div')({
-    display: 'flex',
-    alignItems: 'center',
-    width: '100vw',
-    height: '75vh',
-  })
-  const ImgContainer = styled('div')({
-    flex:1,
-    height: '100%'
-  })
-  const InfoContainer = styled('div')({
-    flex: 1,
-  })
-  const Image = styled('img')({
-    height: '100%'
 
-  })
+const ImgContainer = styled(Box)(({ theme }) => ({
+  width: '100%',
+  height: 'auto',
+  maxHeight: '75vh',
 
-  const Title = styled('h1')({
-    fontSize: 70
-  })
-  const Desc = styled('p')({
-    margin: '50px, 0px',
-    fontSize: 20,
-    fontWeight: 500,
-    letterSpacing: 3
-  })
-  const Button = styled('button')({
-    padding: 10,
-    backgroundColor: 'transparent',
-    fontSize: 20,
-    cursor: 'pointer'
-  })
-  const Slider = () => {
-    const [slideIndex, setSlideIndex] = useState(0);
-    const handleClick = (direction) => {
-      if (direction === "left") {
-        setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
-      } else {
-        setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
-      }
-    };
+}));
 
+const Slideris = () => {
 
   return (
-    <Container>
-    <Arrow direction="left" onClick={() => handleClick("left")}>
-      <ArrowBackIosIcon />
-    </Arrow>
-    <Wrapper slideIndex={slideIndex} >
+    <Carousel sx={{marginTop:'100px'}}
+    interval="7000"
+    indicators="false"
+  >
       {SliderImages.map((item) => (
-        <Slide key={item.id}>
-          <ImgContainer >
-            <Image src={item.img} />
-          </ImgContainer>
-          <InfoContainer>
-            <Title>{item.title}</Title>
-            <Desc>{item.desc}</Desc>
-            <Button>SHOW NOW</Button>
-          </InfoContainer>
-        </Slide>
+        <ImgContainer key={item.id}>
+            <Image  src={item.img}></Image>
+        </ImgContainer>
+
+          
       ))}
-    </Wrapper>
-    <Arrow direction="right" onClick={() => handleClick("right")}>
-      <ArrowForwardIosIcon />
-    </Arrow>
-  </Container>
+      </Carousel>
   )
 }
 
-export default Slider
+export default Slideris;

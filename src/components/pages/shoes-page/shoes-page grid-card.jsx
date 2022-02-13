@@ -20,7 +20,7 @@ const GridPageCard = ({
     display: 'flex', 
     justifyContent: 'center',
     flexDirection: 'column',
-    objectFit: 'scale-down'
+    objectFit: 'scale-down',
   }))
 
   const TotalSize = Size.length

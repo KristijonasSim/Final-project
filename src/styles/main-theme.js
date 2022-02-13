@@ -11,10 +11,6 @@ const mainTheme = createTheme({
       xl: 1500,
     },
   },
-  typography: {
-    fontSize: 14,
-    fontSizeLg: 16,
-  },
 });
 
 const lightTheme = createTheme(mainTheme, {
@@ -25,6 +21,13 @@ const lightTheme = createTheme(mainTheme, {
       },
     },
   },
+  typography: {
+           h4: {
+      [mainTheme.breakpoints.down('md')]: {
+        fontSize: '1.3rem',
+      },
+    },
+},
   palette: {
     primary: {
       main: '#e31238',

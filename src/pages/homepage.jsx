@@ -1,10 +1,9 @@
 import React from 'react'
-import Slideris from '../components/slider/Slideris';
-import ShoesPageGrid from '../components/pages/shoes-page/shoes-page-grid'
-
+import Slider from '../components/slider/slider';
+import Slideris from '../components/advertisement/randoom-shoes/slideris';
 const Homepage = () => {
   return (
-      <><Slideris /><ShoesPageGrid /></>
+    <><Slider /><Slideris /></>
   )
 }
 
