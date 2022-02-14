@@ -1,7 +1,8 @@
 import React from 'react'
 import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import LocalShippingTwoToneIcon from '@mui/icons-material/LocalShippingTwoTone';
+import ReplayIcon from '@mui/icons-material/Replay';
 import { Typography } from '@mui/material';
 import Divider from '@mui/material/Divider';
 
@@ -25,13 +26,13 @@ const DeliveryAdvertismentInfo = () => {
       paddingTop: '16.5%',
       paddingRight: '40px',
       paddingBottom: '16.5%',
-      paddingLeft: '40px',    
+      paddingLeft: '40px',
     },
     [theme.breakpoints.down('md')]: {
       paddingTop: '40px',
       paddingRight: '24px',
       paddingBottom: '40px',
-      paddingLeft: '24px',
+      paddingLeft: '24px', 
     },     
 }));
 
@@ -41,18 +42,24 @@ const DeliveryAdvertismentInfo = () => {
     <StyledinfoContainer  sx={{display: 'flex', alignItems:'center', justifyContent:'center',flexDirection:'column', }}>
       <StyledinfoMiniContainer>
         <Box sx={{display: 'flex'}} >
-            <LocalShippingIcon sx={{fontSize:'40px', color:'#F4F4F4', backgroundColor:'#E73830', marginRight: 3}}/>
+            <Box sx={{ backgroundColor:'#E73830',height:'40px', width:'40px', marginRight: 3, display:'flex', justifyContent: 'center', alignItems: 'center'}}>
+             <LocalShippingTwoToneIcon sx={{fontSize:'30px', color:'#F4F4F4', backgroundColor:'#E73830', }}/>
+            </Box>
            <Typography variant='h4' sx={{fontWeight:'Bold'}}>Delivery with one day  
             <Typography variant='subtitle1' sx={{color: 'gray'}}>
-            All goods are in our warehouse, so we offer <br></br>  extremelyfast one day delivery </Typography>
+            All goods are in our warehouse, so we offer extremelyfast one day delivery </Typography>
            </Typography>
         </Box>
+
         <Divider style={{width:'100%', marginTop: '40px', marginBottom: '40px'}} />
+        
         <Box sx={{display: 'flex', }} >
-            <LocalShippingIcon sx={{fontSize:'40px', color:'#F4F4F4', backgroundColor:'#E73830', marginRight: 3}}/>
+            <Box sx={{ backgroundColor:'#E73830',height:'40px', width:'40px', marginRight: 3, display:'flex', justifyContent: 'center', alignItems: 'center'}}>
+              <ReplayIcon sx={{fontSize:'30px', color:'#F4F4F4', backgroundColor:'#E73830', }}/>
+            </Box>
            <Typography variant='h4' sx={{fontWeight:'Bold'}}>30 Days free return  !!!  
             <Typography variant='subtitle1' sx={{color: 'gray'}}>
-            You can return the product free <br></br>of charge within 30 days of purchase.</Typography>
+            You can return the product freeof charge within 30 days of purchase.</Typography>
            </Typography>
         </Box>
         </StyledinfoMiniContainer>

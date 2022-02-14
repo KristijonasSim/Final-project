@@ -11,7 +11,12 @@ const mainTheme = createTheme({
       xl: 1500,
     },
   },
-});
+  typography: {
+    fontFamily: [
+      'Open Sans',
+    ].join(','),
+  
+  },});
 
 const lightTheme = createTheme(mainTheme, {
   mixins: {

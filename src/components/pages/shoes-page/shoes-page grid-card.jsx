@@ -27,7 +27,7 @@ const GridPageCard = ({
   return (
     <CardElement
     >
-        <CardMedia sx={{cursor: 'pointer', objectFit: 'cover'}}
+        <CardMedia sx={{cursor: 'pointer', objectFit: 'cover',}}
         component="img"
         image={imageURL}
         />

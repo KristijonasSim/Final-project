@@ -25,7 +25,7 @@ const AdvertisedShoes = () => {
 
 
   return (
-    <Box sx={{m:5}}> 
+    <Box> 
       <Typography>Hiii</Typography>
       <ShoesPageGridLayout>
       {itemas.map((item) => (
