@@ -43,11 +43,11 @@ const DeliveryAdvertismentInfo = () => {
       <StyledinfoMiniContainer>
         <Box sx={{display: 'flex'}} >
             <Box sx={{ backgroundColor:'#E73830',height:'40px', width:'40px', marginRight: 3, display:'flex', justifyContent: 'center', alignItems: 'center'}}>
-             <LocalShippingTwoToneIcon sx={{fontSize:'30px', color:'#F4F4F4', backgroundColor:'#E73830', }}/>
+             <LocalShippingTwoToneIcon sx={{fontSize:'30px', color:'#F4F4F4', }}/>
             </Box>
            <Typography variant='h4' sx={{fontWeight:'Bold'}}>Delivery with one day  
             <Typography variant='subtitle1' sx={{color: 'gray'}}>
-            All goods are in our warehouse, so we offer extremelyfast one day delivery </Typography>
+            All goods are in our warehouse, so we offer extremely fast one day delivery </Typography>
            </Typography>
         </Box>
 
@@ -55,11 +55,11 @@ const DeliveryAdvertismentInfo = () => {
         
         <Box sx={{display: 'flex', }} >
             <Box sx={{ backgroundColor:'#E73830',height:'40px', width:'40px', marginRight: 3, display:'flex', justifyContent: 'center', alignItems: 'center'}}>
-              <ReplayIcon sx={{fontSize:'30px', color:'#F4F4F4', backgroundColor:'#E73830', }}/>
+              <ReplayIcon sx={{fontSize:'30px', color:'#F4F4F4', }}/>
             </Box>
            <Typography variant='h4' sx={{fontWeight:'Bold'}}>30 Days free return  !!!  
             <Typography variant='subtitle1' sx={{color: 'gray'}}>
-            You can return the product freeof charge within 30 days of purchase.</Typography>
+            You can return the product free of charge within 30 days of purchase.</Typography>
            </Typography>
         </Box>
         </StyledinfoMiniContainer>

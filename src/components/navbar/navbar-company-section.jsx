@@ -10,7 +10,7 @@ const NavbarCompanySection = () => {
   return (
     <Box>
           
-          <NavbarLink to={routes.HomePage}><img src={process.env.PUBLIC_URL + "/CompanyLogo.PNG"} width="220" sx={{cursor: 'pointer'}}/></NavbarLink>
+          <NavbarLink to={routes.HomePage}><img src={process.env.PUBLIC_URL + "/CompanyLogo.PNG"} width="180" sx={{cursor: 'pointer'}}/></NavbarLink>
 
     </Box>
   )

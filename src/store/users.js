@@ -1,25 +1,22 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import { v4 as createId } from 'uuid';
 
 const initialState = {
-  collection: [
-    { id: '1', name: 'Kevinas', age: 12 },
-    { id: '2', name: 'Silensis', age: 19 },
-    { id: '3', name: 'Vakunda', age: 7 },
-    { id: '4', name: 'Majoris', age: 9 },
-    { id: '5', name: 'Bagnis', age: 98 },
-  ],
+  collection: [],
 };
 
 const userSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
+    loadUsers(state, { payload }) {
+      state.collection = payload.users;
+    },
     addUser(state, { payload }) {
       const newUser = {
         id: createId(),
-        name: payload.name,
-        age: payload.age,
+        ...payload,
       };
       state.collection.push(newUser);
     },
@@ -29,13 +26,18 @@ const userSlice = createSlice({
     },
     updateUser(state, { payload }) {
       const userToUpdate = state.collection.find((u) => u.id === payload.id);
-      userToUpdate.age = payload.age;
-      userToUpdate.name = payload.name;
+      Object.entries(payload)
+        .forEach(([propName, propValue]) => { userToUpdate[propName] = propValue; });
     },
   },
 });
 
-export const { addUser, deleteUser, updateUser } = userSlice.actions;
+export const {
+  addUser,
+  deleteUser,
+  updateUser,
+  loadUsers,
+} = userSlice.actions;
 
 export const selectUsers = (state) => state.users.collection;
 

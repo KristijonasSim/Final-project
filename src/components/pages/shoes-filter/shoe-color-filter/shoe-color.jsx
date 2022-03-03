@@ -5,13 +5,11 @@ import {
 } from '@mui/material';
 import APIService from '../../../../services/api-service';
 
-
-
 const ShoeColor = () => {
   const [items, setItems] = useState([]);
   useEffect(() => {
     (async () => {
-      const fetchedItems = await APIService.fetchedItems();
+      const fetchedItems = await APIService.fetchItems();
       setItems(fetchedItems);
     })();
   }, []); 

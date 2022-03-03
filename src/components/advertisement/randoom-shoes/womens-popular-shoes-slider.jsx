@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 import APIService from '../../../services/api-service';
+
+
+
 import Carousel from "react-elastic-carousel";
 // import { styled } from '@mui/material/styles';
 import GridPageCard from '../../pages/shoes-page/shoes-page grid-card';
@@ -22,7 +25,7 @@ const WomensPopularShoesSlider = () => {
   }, []);
 
   const breakPoints = [
-    { width: 400, itemsToShow: 1 },
+    { width: 400, itemsToShow: 2 },
     { width: 600, itemsToShow: 2 },
     { width: 800, itemsToShow: 3 },
     { width: 1200, itemsToShow: 4 },
@@ -40,8 +43,8 @@ const WomensPopularShoesSlider = () => {
           <Carousel
           enableAutoPlay={true}
           autoPlaySpeed={7000}
-          disableArrowsOnEnd={false}
           breakPoints={breakPoints}
+          pagination={false}
           >
           {randomSlice.map((item) => (
             // eslint-disable-next-line react/jsx-key

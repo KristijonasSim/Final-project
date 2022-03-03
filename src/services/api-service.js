@@ -1,45 +1,6 @@
 import axios from 'axios';
 
 
-/* eslint-disable */
-const fakeFetch = ({ email, password }) => new Promise(((success, failure) => {
-  setTimeout(() => {
-    if(email === 'admin@gmail.com' && password === 'Vilnius123') {
-      success({
-        token: 'jfsdflkajdsflk',
-        user: {
-          id: '5165',
-          role: 'admin',
-          email: 'admin@gmail.com',
-        }
-      });
-    }else {
-      failure(new Error('Incorrect email or/and password'));
-    }
-  }, 1000);
-}));
-
-const login = async({email, password}) => {
-  const response = await fakeFetch({email, password});
-  return response;
-};
-
-
-const checkEmail = (email) => new Promise(((success) => {
-  const existingEmails = ['admin@gmail.com', 'user1@gmail.com'];
-  setTimeout(() => {
-    const emailAvailable = !existingEmails.includes(email);
-    success(emailAvailable);
-  }, 1000);
-}));
-
-const register = () => new Promise (((success) => {
-  setTimeout(() => {
-    success(true);
-  }, 1000)
-}));
-
-
 const annonymousInstance = axios.create({
   baseURL: 'http://localhost:5000/api/auth',
   // timeout: 2000,
@@ -99,9 +60,6 @@ const APIService = {
   fetchCartProducts,
   fetchOrders,
   fetchedItems,
-  login,
-  checkEmail,
-  register,
 };
 
 export default APIService

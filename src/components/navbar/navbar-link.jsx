@@ -7,11 +7,11 @@ const StyledLink = styled(NavLink)(({ theme }) => ({
   padding: theme.spacing(0, 1),
   height: '100%',
   alignItems: 'center',
-  color: theme.palette.text.secondary,
+  color: '#464545',
   fontWeight: theme.typography.fontWeightBold,
   fontSize: theme.typography.fontSizeLg,
   ':hover': {
-    color: theme.palette.text.Success,
+    color: '#E93830',
   },
   '&.active': {
     color: "#E73830",

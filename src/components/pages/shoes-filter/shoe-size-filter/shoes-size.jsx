@@ -6,13 +6,11 @@ import {
 import ShoesFilterSmallBox from '../shoes-filter-small-box';
 import APIService from '../../../../services/api-service';
 
-
-
 const ShoesSize = () => {
     const [items, setItems] = useState([]);
     useEffect(() => {
       (async () => {
-        const fetchedItems = await APIService.fetchedItems();
+        const fetchedItems = await APIService.fetchItems();
         setItems(fetchedItems);
       })();
     }, []); 

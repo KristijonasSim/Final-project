@@ -23,7 +23,7 @@ const ShoesPage = () => {
   
   return (
 
-  <ShoesPageBox sx={{mt:4,}}>
+  <ShoesPageBox sx={{mt:4}}>
       <Box>
         <ShoesFilter/>
       </Box>

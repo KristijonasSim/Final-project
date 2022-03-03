@@ -13,7 +13,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    loginSuccess(state, { payload }) {
+    login(state, { payload }) {
       state.loggedIn = true;
       state.token = payload.token;
       state.user = payload.user;
@@ -27,12 +27,18 @@ const authSlice = createSlice({
       state.redirectTo = null;
       SessionStorage.clear('auth');
     },
+    updateAuthUser(state, { payload }) {
+      state.user = payload.user;
+      if (payload.token) {
+        state.token = payload.token;
+      }
+      SessionStorage.set('auth', state);
+    },
   },
 });
 
-export const { loginSuccess, logout } = authSlice.actions;
+export const { login, logout, updateAuthUser } = authSlice.actions;
 
 export const selectAuth = (state) => state.auth;
 
 export default authSlice.reducer;
-

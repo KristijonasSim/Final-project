@@ -12,6 +12,11 @@ export default [
         pageName: 'HomePage',
       },
       {
+        path: 'Profile',
+        pageName: 'ProfilePage',
+        auth: LOGGED_IN,
+      },
+      {
         path: 'women',
         pageName: 'WomensShoesPage',
 

@@ -1,71 +1,72 @@
-/* eslint-disable */
-import React from 'react';
+import React, { useState } from 'react';
 import {
   TextField,
-  Grid,
-  Box,
   FormControlLabel,
   Checkbox,
+  Grid,
+  Box,
   InputAdornment,
-  CircularProgress
+  CircularProgress,
 } from '@mui/material';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 import ErrorIcon from '@mui/icons-material/Error';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-import { useState } from 'react';
-import APIService from '../services/api-service';
-import { useFormik } from 'formik';
-import * as yup from 'yup';
-import AuthForm from '../components/auth-from';
+import authService from '../services/auth-service';
+import AuthForm from '../../src/components/auth-from/auth-form'
 import routes from '../routing/routes';
-
 
 const validationSchema = yup.object({
   name: yup
     .string()
-    .required('Is required')
+    .required('Name is required')
     .min(2, 'At least 2 letters')
     .max(16, '16 letters maximum')
-    .matches(/^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ]+$/, 'Should only contain letters'),
+    .matches(
+      /^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ]+$/,
+      'Name should only contain letters'
+    ),
   surname: yup
     .string()
-    .required('Is required')
+    .required('Surname is required')
     .min(2, 'At least 2 letters')
     .max(16, '16 letters maximum')
-    .matches(/^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ]+$/, 'Should only contain letters'),
+    .matches(
+      /^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ]+$/,
+      'Surname should only contain letters'
+    ),
   email: yup
     .string()
-    .required('Is required')
-    .email('Is not valid email')
+    .required('Email is required')
+    .email('Email is not valid')
     .test(
       'emailAvailableTest',
       'Email is taken. Choose another',
       (_, { parent: { emailChecked, emailAvailable } }) => {
         if (!emailChecked) return true;
         return emailAvailable;
-      },
+      }
     ),
   password: yup
     .string()
-    .required('Is required')
+    .required('Password is required')
     .min(8, 'At least 8 letters')
     .max(32, '32 letters maximum')
-    .matches(/^.*[A-ZĄČĘĖĮŠŲŪŽ]+.*$/, 'Should contain Capital letter')
-    .matches(/^.*[0-9]+.*$/, 'Should contain number'),
+    .matches(/^.*[A-ZĄČĘĖĮŠŲŪŽ]+.*$/, 'Password should contain Capital letter')
+    .matches(/^.*[0-9]+.*$/, 'Password should contain number'),
   repeatPassword: yup
     .string()
-    .required('Is required')
+    .required('Repeat password is required')
     .oneOf([yup.ref('password')], 'Passwords do not match'),
-  subscribed: yup
-    .boolean()
-    .required('Is required'),
+  subscribed: yup.boolean().required('Is required'),
   emailChecked: yup
     .boolean()
-    .required('Is required')
+    .required('Email check is required')
     .oneOf([true], 'Email must be checked'),
   emailAvailable: yup
     .boolean()
-    .required('Is required')
+    .required('Email availability is required')
     .oneOf([true], 'Email must be available'),
 });
 
@@ -83,13 +84,27 @@ const initialValues = {
 const RegisterPage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit = async ({ emailChecked, emailAvailable, ...formData }) => {
-    const result = await APIService.register(formData);
+  const onSubmit = async ({
+    emailChecked,
+    emailAvailable,
+    subscribed,
+    ...formData
+  }) => {
+    await authService.register(formData);
   };
 
   const {
-    values, touched, errors, isValid, dirty, isSubmitting,
-    handleChange, handleBlur, setFieldValue, setValues, handleSubmit,
+    values,
+    touched,
+    errors,
+    isValid,
+    dirty,
+    isSubmitting,
+    handleChange,
+    handleBlur,
+    setFieldValue,
+    setValues,
+    handleSubmit,
   } = useFormik({
     initialValues,
     validationSchema,
@@ -98,12 +113,15 @@ const RegisterPage = () => {
 
   const handleEmailChange = (e) => {
     if (values.emailChecked) {
-      setValues({
-        ...values,
-        email: e.target.value,
-        emailChecked: false,
-        emailAvailable: false,
-      }, true);
+      setValues(
+        {
+          ...values,
+          email: e.target.value,
+          emailChecked: false,
+          emailAvailable: false,
+        },
+        true
+      );
     } else {
       handleChange(e);
     }
@@ -114,7 +132,7 @@ const RegisterPage = () => {
     if (!errors.email) {
       setIsLoading(true);
       (async () => {
-        const emailAvailable = await APIService.checkEmail(values.email);
+        const emailAvailable = await authService.checkEmail(values.email);
         setFieldValue('emailChecked', true);
         setFieldValue('emailAvailable', emailAvailable);
         setIsLoading(false);
@@ -124,18 +142,28 @@ const RegisterPage = () => {
 
   let emailEndAdornment;
   if (isLoading) {
-    emailEndAdornment = <InputAdornment position="end"><CircularProgress size={24} /></InputAdornment>;
+    emailEndAdornment = (
+      <InputAdornment position="end">
+        <CircularProgress size={24} />
+      </InputAdornment>
+    );
   } else if (values.emailChecked) {
-    emailEndAdornment = values.emailAvailable
-      ? <InputAdornment position="end"><CheckCircleIcon color="success" /></InputAdornment>
-      : <InputAdornment position="end"><ErrorIcon color="error" /></InputAdornment>;
+    emailEndAdornment = values.emailAvailable ? (
+      <InputAdornment position="end">
+        <CheckCircleIcon color="success" />
+      </InputAdornment>
+    ) : (
+      <InputAdornment position="end">
+        <ErrorIcon color="error" />
+      </InputAdornment>
+    );
   }
 
   return (
     <AuthForm
-      title="Registracija"
+      title="Register"
       linkTo={routes.LoginPage}
-      linkTitle="Jau turite paskyrą? Prisijunkite"
+      linkTitle="Already have an account? Login"
       isValid={dirty && isValid}
       onSubmit={handleSubmit}
       loading={isSubmitting}
@@ -146,7 +174,7 @@ const RegisterPage = () => {
             <TextField
               variant="outlined"
               fullWidth
-              label="Vardas"
+              label="Name"
               // Props provided by Formik
               name="name"
               onChange={handleChange}
@@ -161,7 +189,7 @@ const RegisterPage = () => {
             <TextField
               variant="outlined"
               fullWidth
-              label="Pavardė"
+              label="Surname"
               // Props provided by Formik
               name="surname"
               onChange={handleChange}
@@ -176,7 +204,7 @@ const RegisterPage = () => {
             <TextField
               variant="outlined"
               fullWidth
-              label="El. paštas"
+              label="Email"
               InputProps={{
                 endAdornment: emailEndAdornment,
               }}
@@ -194,7 +222,7 @@ const RegisterPage = () => {
             <TextField
               variant="outlined"
               fullWidth
-              label="Slaptažodis"
+              label="Password"
               type="password"
               // Props provided by Formik
               name="password"
@@ -210,7 +238,7 @@ const RegisterPage = () => {
             <TextField
               variant="outlined"
               fullWidth
-              label="Repeat password"
+              label="Repeat Password"
               type="password"
               // Props provided by Formik
               name="repeatPassword"
@@ -224,7 +252,7 @@ const RegisterPage = () => {
           </Grid>
           <Grid item sx={{ mb: 2 }} xs={12}>
             <FormControlLabel
-              control={(
+              control={
                 <Checkbox
                   color="primary"
                   // Props provided by Formik
@@ -233,8 +261,8 @@ const RegisterPage = () => {
                   checked={values.subscribed}
                   disabled={isSubmitting}
                 />
-                  )}
-              label="Noriu gauti su rinkodara susijusius pranešimus"
+              }
+              label="I want to receive marketing notifications"
             />
           </Grid>
         </Grid>

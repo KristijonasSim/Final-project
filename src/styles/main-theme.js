@@ -4,7 +4,7 @@ const mainTheme = createTheme({
   spacing: 12,
   breakpoints: {
     values: {
-      xs: 0,
+      xs: 200,
       sm: 600,
       md: 800,
       lg: 1200,
@@ -29,7 +29,7 @@ const lightTheme = createTheme(mainTheme, {
   typography: {
            h4: {
       [mainTheme.breakpoints.down('md')]: {
-        fontSize: '1.3rem',
+        fontSize: '1.7rem',
       },
     },
 },

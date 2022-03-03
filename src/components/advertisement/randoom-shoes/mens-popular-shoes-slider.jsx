@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 import APIService from '../../../services/api-service';
+
+
+
 import Carousel from "react-elastic-carousel";
 // import { styled } from '@mui/material/styles';
 import GridPageCard from '../../pages/shoes-page/shoes-page grid-card';
@@ -9,6 +12,9 @@ import { Typography } from '@mui/material';
 import MainButtonLink  from '../../buttons/main-button-link'
 import ArrowRightAltSharpIcon from '@mui/icons-material/ArrowRightAltSharp';
 import routes from '../../../routing/routes';
+
+
+
 const MensPopularShoesSlider = () => {
   const [items, setItems] = useState([]);
   useEffect(() => {

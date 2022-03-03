@@ -5,7 +5,6 @@ import WomensPopularShoesSlider from '../components/advertisement/randoom-shoes/
 import { Box } from '@mui/material';
 import DeliveryAdvertisment from '../components/advertisement/delivery-advertisment/delivery-advertisment';
 import { styled } from '@mui/material/styles';
-
 const Homepage = () => {
 
 

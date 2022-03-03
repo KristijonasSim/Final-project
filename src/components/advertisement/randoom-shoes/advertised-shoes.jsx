@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/material';
-import {
-  Typography,
-} from '@mui/material';
-import APIService from '../../../services/api-service';
-
+import ProductService from '../../../services/product-service'
 import ShoesPageGridLayout from '../../pages/shoes-page/shoes-page-grid-layout';
 import GridPageCard from '../../pages/shoes-page/shoes-page grid-card';
 
@@ -16,7 +12,7 @@ const AdvertisedShoes = () => {
   const [items, setItems] = useState([]);
   useEffect(() => {
     (async () => {
-      const fetchedItems = await APIService.fetchedItems();
+      const fetchedItems = await ProductService.fetchedItems();
       setItems(fetchedItems);
 
     })();
@@ -26,7 +22,6 @@ const AdvertisedShoes = () => {
 
   return (
     <Box> 
-      <Typography>Hiii</Typography>
       <ShoesPageGridLayout>
       {itemas.map((item) => (
         <GridPageCard
