@@ -20,6 +20,7 @@ const MensPopularShoesSlider = () => {
   useEffect(() => {
     (async () => {
       const fetchedItems = await APIService.fetchedItems();
+      console.log(fetchedItems)
       setItems(fetchedItems);
 
     })();

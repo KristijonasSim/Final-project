@@ -1,10 +1,11 @@
 import React from 'react'
-import ShoesPage from '../components/pages/shoes-page/shoes-page'
+import HomePagas from '../components/pages/bandom-kopijuoti/home-page'
+
 
 const  WomensShoesPage = () => {
   return (
     <div>
-      <ShoesPage/>
+      <HomePagas/>
     </div>
   )
 }

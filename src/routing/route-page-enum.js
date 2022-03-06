@@ -7,7 +7,7 @@ import MensShoesPage from '../pages/mens-shoes-page'
 import WomensShoesPage from '../pages/womens-shoes-page'
 import Blog from '../pages/blog'
 import ProfilePage from '../components/pages/logged-in-pages/profile-page';
-
+import SingleShoePage from '../components/pages/bandom-kopijuoti/single-shoe-page/single-shoe-page';
 export default {
   PageLayout,
   HomePage,
@@ -17,5 +17,6 @@ export default {
   MensShoesPage,
   WomensShoesPage,
   Blog,
-  ProfilePage
+  ProfilePage,
+  SingleShoePage
 };

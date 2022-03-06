@@ -12,7 +12,6 @@ const ShoesPage = () => {
 
   const ShoesPageBox = styled(Box)(({theme}) => ({
     display: 'flex',
-    justifyContent: 'space-around',
     paddingLeft: '40px',
     paddingRight: '40px',
     [theme.breakpoints.down('lg')]: {

@@ -11,34 +11,17 @@ const annonymousInstance = axios.create({
   mode: 'no-cors',
 });
 
-const fetchUsers = async () => {
-  const response = await annonymousInstance.get('/users');
-  return response.data;
-};
+
 
 const fetchItems = async () => {
-  const response = await annonymousInstance.get('/items');
-  return response.data.items;
+  const response = await annonymousInstance.get('/products');
+  return response.data.products;
 };
 
-const fetchCarts = async () => {
-  const response = await annonymousInstance.get('/carts');
-  return response.data;
-};
-
-const fetchCartProducts = async () => {
-  const response = await annonymousInstance.get('/cartProducts');
-  return response.data;
-};
-
-const fetchOrders = async () => {
-  const response = await annonymousInstance.get('/orders');
-  return response.data;
-};
 
 const fetchedItems = async () => {
-  const items = await fetchItems();
-  const formatedItems = items.map(({
+  const products = await fetchItems();
+  const formatedItems = products.map(({
     id, price, ...rest
   }) => {
     const item = {
@@ -54,11 +37,7 @@ const fetchedItems = async () => {
 
 
 const APIService = {
-  fetchUsers,
   fetchItems,
-  fetchCarts,
-  fetchCartProducts,
-  fetchOrders,
   fetchedItems,
 };
 

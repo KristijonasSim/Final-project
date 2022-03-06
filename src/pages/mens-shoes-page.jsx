@@ -1,12 +1,12 @@
 import React from 'react'
-
-import ShoesPage from '../components/pages/shoes-page/shoes-page'
-// const womensProducts = Products.filter();
-
+import HomePagas from '../components/pages/bandom-kopijuoti/home-page'
 var MensShoesPage = () => {
   return (
+
+
+    
     <div>
-      <ShoesPage/>
+      <HomePagas/>
     </div>
   )
 }

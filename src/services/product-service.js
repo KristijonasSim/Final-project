@@ -1,4 +1,5 @@
 import axios from 'axios';
+import store from '../store/index';
 
 const requester = axios.create({
   baseURL: 'http://localhost:5000/api',
@@ -15,16 +16,30 @@ const fetchProducts = async (searchParams) => {
     throw new Error(error.message);
   }
 };
+const fetchProduct = async (id) => {
+  const { token } = store.getState().auth;
+  const response = await requester.get(`/products/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+  return response.data;
+}
 
-const fetchCategories = async () => {
-  try {
-    const { data } = await requester.get('/categories');
-    return data;
-  } catch (error) {
-    throw new Error(error.message);
+const fetchFormatedProduct= async (id) => {
+  const [product] = await Promise.all([
+    fetchProduct(id)
+  ]);
+
+  const formattedProduct= {
+    ...product,
+    price: `${product.price}`
   }
-};
 
+  return formattedProduct;
+}
+  
 const fetchFilters = async (categoryId) => {
   let queryParams = '';
   if (categoryId) {
@@ -39,10 +54,20 @@ const fetchFilters = async (categoryId) => {
   }
 };
 
+const fetchCategories = async () => {
+  try {
+    const { data } = await requester.get('/categories');
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 const ProductService = {
   fetchProducts,
   fetchCategories,
   fetchFilters,
+  fetchFormatedProduct
 };
 
 export default ProductService;

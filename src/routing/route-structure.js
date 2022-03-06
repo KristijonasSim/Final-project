@@ -37,6 +37,11 @@ export default [
         auth: VISITOR,
       },
       {
+        path: "products/:id",
+        pageName: "SingleShoePage",
+        auth: VISITOR,
+      },
+      {
         path: 'blog',
         pageName: 'Blog',
         auth: LOGGED_IN,
