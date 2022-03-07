@@ -1,5 +1,5 @@
 import React from 'react'
-import HomePagas from '../components/pages/bandom-kopijuoti/home-page'
+import HomePagas from '../../src/components/pages/main-products/home-page/index'
 var MensShoesPage = () => {
   return (
 

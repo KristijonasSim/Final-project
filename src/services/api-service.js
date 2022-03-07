@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 const annonymousInstance = axios.create({
-  baseURL: 'http://localhost:5000/api/auth',
+  baseURL: 'http://localhost:5000/api',
   // timeout: 2000,
   headers: {
     'Content-Type': 'application/json',
@@ -24,12 +24,12 @@ const fetchedItems = async () => {
   const formatedItems = products.map(({
     id, price, ...rest
   }) => {
-    const item = {
+    const product = {
       ...rest,
       id,
-      price: `${price.value} ${price.currency}`,
+      price: `${price}`,
     };
-    return item;
+    return product;
   });
   return formatedItems;
 };

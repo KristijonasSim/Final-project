@@ -9,12 +9,13 @@ const useProducts = () => {
   useEffect(() => {
     (async () => {
       if (searchParams.get('category')) {
+        console.log(searchParams);
         const fetchedProducts = await ProductService.fetchProducts(searchParams);
         setProducts(fetchedProducts);
       }
     })();
   }, [searchParams]);
-  console.log(ProductService)
+  console.log(searchParams);
 
   return products;
 };

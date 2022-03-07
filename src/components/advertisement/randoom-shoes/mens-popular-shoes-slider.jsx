@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
-import APIService from '../../../services/api-service';
+import ProductService from '../../../services/product-service';
 
 
 
@@ -12,19 +11,21 @@ import { Typography } from '@mui/material';
 import MainButtonLink  from '../../buttons/main-button-link'
 import ArrowRightAltSharpIcon from '@mui/icons-material/ArrowRightAltSharp';
 import routes from '../../../routing/routes';
+import { useSearchParams } from 'react-router-dom';
 
 
 
 const MensPopularShoesSlider = () => {
   const [items, setItems] = useState([]);
+  const [searchParams] = useSearchParams()
   useEffect(() => {
     (async () => {
-      const fetchedItems = await APIService.fetchedItems();
-      console.log(fetchedItems)
+      console.log(searchParams);
+      const fetchedItems = await ProductService.fetchProducts(searchParams);
       setItems(fetchedItems);
 
     })();
-  }, []);
+  }, [searchParams]);
 
   const breakPoints = [
     { width: 400, itemsToShow: 1 },

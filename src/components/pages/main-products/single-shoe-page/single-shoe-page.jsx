@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import APIService from '../../../../services/api-service';
+import ProductService from '../../../../services/product-service';
 import SinglShoePageCard from './single-shoe-page-card'
 
 
@@ -10,7 +10,7 @@ const SingleShoePage = () => {
 
   useEffect(() => {
     (async () => {
-      const fetchedProduct = await APIService.fetchFormatedProduct(id);
+      const fetchedProduct = await ProductService.fetchFormatedProduct(id);
       setProduct(fetchedProduct);
 
     })();

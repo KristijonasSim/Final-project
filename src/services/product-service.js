@@ -7,15 +7,17 @@ const requester = axios.create({
     'Content-Type': 'application/json',
   },
 });
-
 const fetchProducts = async (searchParams) => {
+  console.log(searchParams);
   try {
     const { data } = await requester.get(`/products?${searchParams.toString()}`);
     return data;
   } catch (error) {
+    console.log('error');
     throw new Error(error.message);
   }
 };
+
 const fetchProduct = async (id) => {
   const { token } = store.getState().auth;
   const response = await requester.get(`/products/${id}`, {
@@ -27,19 +29,36 @@ const fetchProduct = async (id) => {
   return response.data;
 }
 
-const fetchFormatedProduct= async (id) => {
+const fetchFormatedProduct = async (id) => {
   const [product] = await Promise.all([
     fetchProduct(id)
   ]);
 
-  const formattedProduct= {
+  const formattedProduct = {
     ...product,
     price: `${product.price}`
   }
 
   return formattedProduct;
 }
-  
+
+const fetchFormatedProducts = async () => {
+  const products = await fetchProducts();
+  console.log(products)
+  const formatedProducts = products.map(({
+    id, price, ...rest
+  }) => {
+    const product = {
+      ...rest,
+      id,
+      price: `${price}`,
+    };
+    return product;
+  });
+  return formatedProducts;
+};
+
+
 const fetchFilters = async (categoryId) => {
   let queryParams = '';
   if (categoryId) {
@@ -67,7 +86,8 @@ const ProductService = {
   fetchProducts,
   fetchCategories,
   fetchFilters,
-  fetchFormatedProduct
+  fetchFormatedProduct,
+  fetchFormatedProducts
 };
 
 export default ProductService;
