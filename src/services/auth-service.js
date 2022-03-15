@@ -3,7 +3,7 @@ import store from '../store/index';
 import * as authSlice from '../store/auth';
 
 const requester = axios.create({
-  baseURL: 'http://localhost:5000/api/auth',
+  baseURL: 'http://localhost:5002/api/auth',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -40,8 +40,21 @@ const register = async (body) => {
   throw new Error(data.message);
 };
 
+const addOrder = async (Data) => {
+  const { token } = store.getState().auth;
+  const response = await requester.post('/order', Data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+
+  return response.data;
+};
+
 export default {
   login,
   checkEmail,
   register,
+  addOrder,
 };

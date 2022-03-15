@@ -15,8 +15,9 @@ const mainTheme = createTheme({
     fontFamily: [
       'Open Sans',
     ].join(','),
-  
-  },});
+
+  },
+});
 
 const lightTheme = createTheme(mainTheme, {
   mixins: {
@@ -27,12 +28,12 @@ const lightTheme = createTheme(mainTheme, {
     },
   },
   typography: {
-           h4: {
+    h4: {
       [mainTheme.breakpoints.down('md')]: {
         fontSize: '1.7rem',
       },
     },
-},
+  },
   palette: {
     primary: {
       main: '#e31238',

@@ -8,14 +8,13 @@ import {
   Divider,
 } from '@mui/material';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined'; 
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 
-import StyledLink from './navbar-link'
-import routes from '../../routing/routes';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout, selectAuth } from '../../store/auth';
 import { useNavigate } from 'react-router-dom';
+import StyledLink from './navbar-link';
+import routes from '../../routing/routes';
+import { logout, selectAuth } from '../../store/auth';
 
 const NavbarUserSection = () => {
   const navigate = useNavigate();
@@ -30,72 +29,79 @@ const NavbarUserSection = () => {
 
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
-  
 
-
-const handleProfileLinkClick = () => {
-  handleClose();
-  navigate(routes.ProfilePage);
-};
+  const handleProfileLinkClick = () => {
+    handleClose();
+    navigate(routes.ProfilePage);
+  };
 
   return (
     <Box>
-        {
+      {
           loggedIn
-            ? 
-            <><Box sx={{display: 'flex', alignItems: 'center'}}>
-            <PersonOutlineOutlinedIcon sx={{fontSize: 36,}}
-              size='large'
-              onClick={handleOpen}
-              color="inherit"
-              ref={iconButtonRef}
-              cursor='pointer'
-            >
-              <AccountCircleIcon />
-            </PersonOutlineOutlinedIcon>
-            <ShoppingBagOutlinedIcon sx={{ fontSize: 33, cursor: 'pointer', marginLeft: 2,}} />
-            </Box>
-            <Menu
-              anchorEl={iconButtonRef.current}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'right',
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              open={isOpen}
-              onClose={handleClose}
-            >
-                <MenuItem onClick={handleProfileLinkClick} sx={{ display: 'flex', justifyContent: 'space-between', gap: 1, width:200 }}>
-                  <Typography textAlign="center">Profile</Typography>
-                </MenuItem>
-                <Divider />
-                <MenuItem  sx={{ display: 'flex', justifyContent: 'space-between', gap: 1 }}>
-                  <Typography textAlign="center">My orders</Typography>
+            ? (
+              <>
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <PersonOutlineOutlinedIcon
+                    sx={{
+                      fontSize: 36, height: '100%', alignItems: 'center', justifyContent: 'center',
+                    }}
+                    size="small"
+                    onClick={handleOpen}
+                    color="inherit"
+                    ref={iconButtonRef}
+                    cursor="pointer"
+                  />
 
-                </MenuItem>
-                <Divider />
-                <MenuItem onClick={handleLogout} sx={{ display: 'flex', justifyContent: 'space-between', gap: 1 }}>
-                <Typography textAlign="center">Logout</Typography>
+                  <StyledLink to={routes.Cart} sx={{ height: '32px', verticalAlign: 'middle' }}>
+                    <ShoppingBagOutlinedIcon sx={{
+                      fontSize: 30, height: '32px', cursor: 'pointer', marginLeft: 1,
+                    }}
+                    />
+                  </StyledLink>
+                </Box>
+                <Menu
+                  anchorEl={iconButtonRef.current}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  open={isOpen}
+                  onClose={handleClose}
+                >
+                  <MenuItem
+                    onClick={handleProfileLinkClick}
+                    sx={{
+                      display: 'flex', justifyContent: 'space-between', gap: 1, width: 200,
+                    }}
+                  >
+                    <Typography textAlign="center">Profile</Typography>
+                  </MenuItem>
+                  <Divider />
+                  <MenuItem onClick={handleLogout} sx={{ display: 'flex', justifyContent: 'space-between', gap: 1 }}>
+                    <Typography textAlign="center">Logout</Typography>
 
-                </MenuItem>
-              </Menu></>
+                  </MenuItem>
+                </Menu>
+
+              </>
+            )
             : (
               <Box>
-                <StyledLink  to={routes.LoginPage} >LOGIN</StyledLink>
+                <StyledLink to={routes.LoginPage}>LOGIN</StyledLink>
 
                 <StyledLink to={routes.RegisterPage}>REGISTER</StyledLink>
               </Box>
             )
         }
     </Box>
-    
-  )
-}
 
-export default NavbarUserSection
+  );
+};
 
-
+export default NavbarUserSection;

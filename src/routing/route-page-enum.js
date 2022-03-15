@@ -1,22 +1,23 @@
-import PageLayout from '../components/layout/page-layout'
-import HomePage from '../pages/homepage'
+import PageLayout from '../components/layout/page-layout';
+import HomePage from '../pages/home-page/homepage';
 import LoginPage from '../pages/login-page';
 import RegisterPage from '../pages/register-page';
 import ErrorPage from '../pages/error-page';
-import MensShoesPage from '../pages/mens-shoes-page'
-import WomensShoesPage from '../pages/womens-shoes-page'
-import Blog from '../pages/blog'
-import ProfilePage from '../components/pages/logged-in-pages/profile-page';
-import SingleShoePage from '../components/pages/main-products/single-shoe-page/single-shoe-page';
+import ProfilePage from '../pages/profile-page';
+import SingleShoePage from '../pages/products-page/single-shoe-page/single-shoe-page';
+import Cart from '../components/cart/cart';
+import Checkout from '../components/checkout.jsx/Checkout';
+import SneakersPage from '../pages/products-page/products-grid-page';
+
 export default {
   PageLayout,
   HomePage,
   LoginPage,
   RegisterPage,
   ErrorPage,
-  MensShoesPage,
-  WomensShoesPage,
-  Blog,
   ProfilePage,
-  SingleShoePage
+  SingleShoePage,
+  Cart,
+  Checkout,
+  SneakersPage,
 };

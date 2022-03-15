@@ -1,16 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import auth from './auth';
-import users from './users';
-import collections from './collections';
-import categories from './categories';
+import cart from './cart';
 
 const store = configureStore({
   reducer: {
-    users,
     auth,
-    categories,
-    collections
-
+    cart,
   },
 });
 

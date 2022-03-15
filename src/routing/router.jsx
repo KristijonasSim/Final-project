@@ -4,16 +4,14 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
-import { VISITOR, ADMIN, LOGGED_IN } from './auth-types';
+import { VISITOR, LOGGED_IN } from './auth-types';
 import RequireVisitor from './require-visitor';
-import RequireAdmin from './require-admin';
 import RequireLoggedIn from './require-logged-in';
 import routeStructure from './route-structure';
 import routePageEnum from './route-page-enum';
 
 const addRouteProtection = {
   [VISITOR]: (Page) => <RequireVisitor><Page /></RequireVisitor>,
-  [ADMIN]: (Page) => <RequireAdmin><Page /></RequireAdmin>,
   [LOGGED_IN]: (Page) => <RequireLoggedIn><Page /></RequireLoggedIn>,
 };
 

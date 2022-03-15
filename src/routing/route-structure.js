@@ -17,13 +17,8 @@ export default [
         auth: LOGGED_IN,
       },
       {
-        path: 'women',
-        pageName: 'WomensShoesPage',
-
-      },
-      {
-        path: 'men',
-        pageName: 'MensShoesPage',
+        path: 'sneakers',
+        pageName: 'SneakersPage',
 
       },
       {
@@ -37,13 +32,18 @@ export default [
         auth: VISITOR,
       },
       {
-        path: "products/:id",
-        pageName: "SingleShoePage",
-        auth: VISITOR,
+        path: 'products/:id',
+        pageName: 'SingleShoePage',
+        auth: LOGGED_IN,
       },
       {
-        path: 'blog',
-        pageName: 'Blog',
+        path: 'cart',
+        pageName: 'Cart',
+        auth: LOGGED_IN,
+      },
+      {
+        path: 'checkout',
+        pageName: 'Checkout',
         auth: LOGGED_IN,
       },
       {

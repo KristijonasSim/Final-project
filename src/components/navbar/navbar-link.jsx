@@ -14,11 +14,9 @@ const StyledLink = styled(NavLink)(({ theme }) => ({
     color: '#E93830',
   },
   '&.active': {
-    color: "#E73830",
+    color: '#E73830',
   },
 }));
-
-
 
 const NavbarLink = ({ to, children }) => (
   <StyledLink to={to}>

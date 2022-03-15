@@ -14,7 +14,7 @@ import ErrorIcon from '@mui/icons-material/Error';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 import authService from '../services/auth-service';
-import AuthForm from '../../src/components/auth-from/auth-form'
+import AuthForm from '../components/auth-from/auth-form';
 import routes from '../routing/routes';
 
 const validationSchema = yup.object({
@@ -25,7 +25,7 @@ const validationSchema = yup.object({
     .max(16, '16 letters maximum')
     .matches(
       /^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ]+$/,
-      'Name should only contain letters'
+      'Name should only contain letters',
     ),
   surname: yup
     .string()
@@ -34,7 +34,7 @@ const validationSchema = yup.object({
     .max(16, '16 letters maximum')
     .matches(
       /^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ]+$/,
-      'Surname should only contain letters'
+      'Surname should only contain letters',
     ),
   email: yup
     .string()
@@ -46,7 +46,7 @@ const validationSchema = yup.object({
       (_, { parent: { emailChecked, emailAvailable } }) => {
         if (!emailChecked) return true;
         return emailAvailable;
-      }
+      },
     ),
   password: yup
     .string()
@@ -120,7 +120,7 @@ const RegisterPage = () => {
           emailChecked: false,
           emailAvailable: false,
         },
-        true
+        true,
       );
     } else {
       handleChange(e);
@@ -252,7 +252,7 @@ const RegisterPage = () => {
           </Grid>
           <Grid item sx={{ mb: 2 }} xs={12}>
             <FormControlLabel
-              control={
+              control={(
                 <Checkbox
                   color="primary"
                   // Props provided by Formik
@@ -261,7 +261,7 @@ const RegisterPage = () => {
                   checked={values.subscribed}
                   disabled={isSubmitting}
                 />
-              }
+              )}
               label="I want to receive marketing notifications"
             />
           </Grid>

@@ -14,20 +14,18 @@ const ButtonMore = styled(Link)(({ theme }) => ({
   lineHeight: '1.428571429',
   fontWeight: theme.typography.fontWeightBold,
   fontSize: theme.typography.fontSize,
-  fontFamily:theme.typography.fontFamily,
+  fontFamily: theme.typography.fontFamily,
   ':hover': {
-    backgroundColor: "#E93830",
+    backgroundColor: '#E93830',
     color: 'white',
-    border: '1px solid transparent'
+    border: '1px solid transparent',
   },
 }));
 
-
-
-const MainButtonLink = ({to, children}) => (
+const MainButtonLink = ({ to, children }) => (
   <ButtonMore to={to}>
     {children}
   </ButtonMore>
-)
+);
 
-export default MainButtonLink
+export default MainButtonLink;

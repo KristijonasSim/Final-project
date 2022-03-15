@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { TextField, Grid, Alert, IconButton } from '@mui/material';
+import {
+  TextField, Grid, Alert, IconButton,
+} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import AuthForm from '../../src/components/auth-from/auth-form'
+import AuthForm from '../components/auth-from/auth-form';
 import AuthService from '../services/auth-service';
 import routes from '../routing/routes';
 
@@ -30,7 +32,7 @@ const LoginPage = () => {
       const redirectTo = searchParams.get('redirectTo');
       await AuthService.login({ email, password }, redirectTo);
     } catch (error) {
-      setErrorMsg(error.message);
+      setErrorMsg('Email or / and password is incorect');
     }
   };
 
@@ -64,7 +66,7 @@ const LoginPage = () => {
           <Grid item xs={12}>
             <Alert
               severity="error"
-              action={
+              action={(
                 <IconButton
                   aria-label="close"
                   color="inherit"
@@ -73,7 +75,7 @@ const LoginPage = () => {
                 >
                   <CloseIcon fontSize="inherit" />
                 </IconButton>
-              }
+              )}
             >
               {errorMsg}
             </Alert>
