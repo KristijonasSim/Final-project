@@ -13,6 +13,7 @@ const SneakersPage = () => {
     display: 'flex',
     paddingLeft: '40px',
     paddingRight: '40px',
+    marginTop: 4,
     [theme.breakpoints.down('md')]: {
       display: 'Block',
     },
@@ -20,7 +21,7 @@ const SneakersPage = () => {
   return (
     <ProductProvider>
       <HomePageHeader />
-      <ShoesPageBox sx={{ mt: 4 }}>
+      <ShoesPageBox>
         <Box>
           <Filters />
         </Box>

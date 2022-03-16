@@ -9,14 +9,18 @@ const HomePageProductsGrid = () => {
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    (async () => {
-      if (searchParams.get('category')) {
-        const fetchedProducts = await ProductService.fetchProducts(searchParams);
-        setProducts(fetchedProducts);
+    const timer = setTimeout(() => {
+      (async () => {
+        if (searchParams.get('category')) {
+          const fetchedProducts = await ProductService.fetchProducts(searchParams);
+          setProducts(fetchedProducts);
+        }
       }
-    })();
+      )();
+    }, 1000);
+    return () => clearTimeout(timer);
   }, [searchParams]);
-  console.log(products);
+
   return (
     <ShoesPageGridLayout container spacing={2}>
       {products.map((props) => (

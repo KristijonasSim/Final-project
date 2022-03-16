@@ -22,7 +22,7 @@ const CardElement = styled(Card)({
 });
 
 const HomePageProductsCard = ({
-  id, images, price, size, title, stock,
+  id, images, price, size, title,
 }) => {
   const navigate = useNavigate();
 
@@ -61,8 +61,6 @@ const HomePageProductsCard = ({
           variant="body2"
           color="text.secondary"
         >
-          {stock}
-          {' '}
           In warehouse right now
         </Typography>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 1 }}>

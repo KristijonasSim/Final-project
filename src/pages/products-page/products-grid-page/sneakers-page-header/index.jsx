@@ -22,7 +22,6 @@ const HomePageHeader = () => {
             onClick={() => changeCategory(id)}
           >
             <Typography>{title}</Typography>
-
           </Button>
         </React.Fragment>
       ))}

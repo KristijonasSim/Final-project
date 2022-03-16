@@ -73,21 +73,27 @@ const Checkout = () => {
     border: '1px solid #E5E5E5',
     boxSizing: 'border-box',
     padding: '30px 16px',
-    width: '50%',
-    [theme.breakpoints.down('md')]: {
+    width: '60%',
+    [theme.breakpoints.down('lg')]: {
       width: '100%',
       marginBottom: '50px',
+    },
+
+  }));
+
+  const Boksas = styled(Box)(({ theme }) => ({
+    display: 'flex',
+    marginTop: '100px',
+    justifyContent: 'center',
+    paddingLeft: '40px',
+    paddingRight: '40px',
+    [theme.breakpoints.down('lg')]: {
+      display: 'Block',
     },
   }));
 
   return (
-    <Box sx={{
-      paddingLeft: '40px',
-      paddingRight: '40px',
-      display: 'flex',
-      justifyContent: 'center',
-    }}
-    >
+    <Boksas>
       <OrderContainer>
         <Box sx={{ display: 'flex', mb: 2 }}>
           <ShoppingBagOutlinedIcon fontSize="large" sx={{ backgroundColor: '#E31238', color: 'white', padding: '4px' }} />
@@ -136,7 +142,7 @@ const Checkout = () => {
           </Typography>
         </Box>
       </OrderContainer>
-    </Box>
+    </Boksas>
   );
 };
 

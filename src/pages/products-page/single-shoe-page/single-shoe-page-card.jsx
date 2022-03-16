@@ -117,9 +117,9 @@ const SinglShoePageCard = ({
         />
 
         <Box sx={{ display: 'flex' }}>
-          <StockButton sx={{ mr: 1 }}>
-            <DoneIcon fontSize="large" />
-            WE HAVE IT
+          <StockButton sx={{ mr: 1, display: 'flex', justifyContent: 'center' }}>
+            <DoneIcon fontSize="large" sx={{ mb: '10px' }} />
+            <Typography>WE HAVE IT</Typography>
           </StockButton>
           <CartButton
             sx={{ height: '48px' }}

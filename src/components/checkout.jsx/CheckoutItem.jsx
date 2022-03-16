@@ -6,7 +6,7 @@ const CartItem = ({ item }) => (
     <Box
       key={item.id}
       sx={{
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexGrow: '1',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}
     >
       <Box>
@@ -16,6 +16,7 @@ const CartItem = ({ item }) => (
             maxHeight: '80px',
             maxWidth: '100%',
             objectFit: 'cover',
+            margin: 0,
           }}
           src={item.images[0]}
           alt={item.title}
