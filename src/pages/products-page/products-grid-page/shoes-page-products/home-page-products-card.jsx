@@ -30,7 +30,6 @@ const HomePageProductsCard = ({
     navigate(`/products/${id}`);
   }, [id]);
 
-  const TotalSize = size.length;
   return (
     <CardElement>
       <CardMedia
@@ -44,9 +43,9 @@ const HomePageProductsCard = ({
         variant="body2"
         color="text.secondary"
       >
-        {TotalSize}
+        Size:
         {' '}
-        Sizes
+        {size}
       </Typography>
       <Divider sx={{ mt: 1 }} />
 

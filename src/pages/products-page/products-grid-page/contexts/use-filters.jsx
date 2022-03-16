@@ -56,24 +56,6 @@ const useFilters = (selectedCategory) => {
     setSearchParams(urlParams);
   };
 
-  const changeAutocompleteFilter = (filter, { action, option }) => {
-    const newFilter = { ...filter };
-
-    switch (action) {
-      case 'add':
-        newFilter.options.find((x) => x.id === option.id)
-          .selected = true;
-        break;
-      case 'remove':
-        newFilter.options.find((x) => x.id === option.id)
-          .selected = false;
-        break;
-      default: break;
-    }
-
-    return newFilter;
-  };
-
   const changeRangeFilter = (filter, [min, max]) => ({
     ...filter,
     currMin: min,
@@ -100,7 +82,6 @@ const useFilters = (selectedCategory) => {
   };
 
   const changeFilterMap = {
-    autocomplete: changeAutocompleteFilter,
     range: changeRangeFilter,
     colorOptions: changeOptionsFilter,
     sizeOptions: changeSizeFilter,

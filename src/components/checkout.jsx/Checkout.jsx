@@ -9,16 +9,16 @@ import {
   Box,
 } from '@mui/material';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
-import { selectCart } from '../../store/cart';
 import { selectAuth } from '../../store/auth';
+import { selectCart } from '../../store/cart';
 import CheckoutItem from './CheckoutItem';
 import ProductService from '../../services/product-service';
 
 const Checkout = () => {
   const [totalPrice, setTotalPrice] = useState(0);
+  const { user } = useSelector(selectAuth);
 
   const { cart } = useSelector(selectCart);
-  const { user } = useSelector(selectAuth);
 
   const [openNotification, setOpenNotification] = useState(false);
 
@@ -36,7 +36,7 @@ const Checkout = () => {
     let price = 0;
     items.forEach((x) => {
       const itemPrice = x.price.replace(' EUR', '');
-      price += parseFloat(itemPrice) * x.qty;
+      price += parseFloat(itemPrice) * x.amount;
     });
 
     return price;
@@ -44,15 +44,15 @@ const Checkout = () => {
 
   const handleBuy = () => {
     let price = 0;
-    let qty = 0;
+    let amount = 0;
     cart.forEach((x) => {
       const itemPrice = x.price.replace(' EUR', '');
-      price += parseFloat(itemPrice) * x.qty;
-      qty += x.qty;
+      price += parseFloat(itemPrice) * x.amount;
+      amount += x.amount;
     });
 
     ProductService.addOrder({
-      qty,
+      amount,
       totalAmount: price,
       status: 'COMPLETED',
       userId: user.id,

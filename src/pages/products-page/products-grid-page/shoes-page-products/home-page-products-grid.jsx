@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Card from './home-page-products-card';
-
+import ProductService from '../../../../services/product-service';
 import ShoesPageGridLayout from './shoes-page-grid-layout';
 
 const HomePageProductsGrid = () => {
@@ -16,7 +16,7 @@ const HomePageProductsGrid = () => {
       }
     })();
   }, [searchParams]);
-
+  console.log(products);
   return (
     <ShoesPageGridLayout container spacing={2}>
       {products.map((props) => (

@@ -11,7 +11,7 @@ const Image = styled('img')({
 
 const ImgContainer = styled(Box)({
   width: '100%',
-  height: 'auto',
+  height: '100%',
   maxHeight: '75vh',
 
 });

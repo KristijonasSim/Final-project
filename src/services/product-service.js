@@ -19,7 +19,7 @@ const fetchProducts = async (searchParams) => {
 
 const fetchProduct = async (id) => {
   const { token } = store.getState().auth;
-  const response = await requester.get(`/products/products/${id}`, {
+  const response = await requester.get(`/products/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
